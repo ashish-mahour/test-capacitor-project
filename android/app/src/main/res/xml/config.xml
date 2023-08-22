@@ -38,6 +38,19 @@
     <param name="android-package" value="nl.xservices.plugins.Calendar"/>
   </feature>
 
+  <feature name="FilePath">
+    <param name="android-package" value="com.hiddentao.cordova.filepath.FilePath"/>
+    <param name="onload" value="true"/>
+  </feature>
+
+  <feature name="Fingerprint">
+    <param name="android-package" value="de.niklasmerz.cordova.biometric.Fingerprint"/>
+  </feature>
+
+  <feature name="Globalization">
+    <param name="android-package" value="org.apache.cordova.globalization.Globalization"/>
+  </feature>
+
   <feature name="NativeStorage">
     <param name="android-package" value="NativeStorage"/>
   </feature>

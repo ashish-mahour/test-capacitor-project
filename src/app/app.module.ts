@@ -13,7 +13,9 @@ import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions
 import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 import { AppAvailability } from '@awesome-cordova-plugins/app-availability/ngx';
 import { Calendar } from '@awesome-cordova-plugins/calendar/ngx';
-
+import { FilePath } from '@awesome-cordova-plugins/file-path/ngx';
+import { FingerprintAIO } from '@awesome-cordova-plugins/fingerprint-aio/ngx';
+import { Globalization } from '@awesome-cordova-plugins/globalization/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +29,9 @@ import { Calendar } from '@awesome-cordova-plugins/calendar/ngx';
     AppVersion,
     AppAvailability,
     Calendar,
-    
+    FilePath,
+    FingerprintAIO,
+    Globalization
   ],
   bootstrap: [AppComponent],
 })

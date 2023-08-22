@@ -66,6 +66,14 @@
         ]
         },
       {
+          "id": "cordova-plugin-fingerprint-aio.Fingerprint",
+          "file": "plugins/cordova-plugin-fingerprint-aio/www/Fingerprint.js",
+          "pluginId": "cordova-plugin-fingerprint-aio",
+        "clobbers": [
+          "Fingerprint"
+        ]
+        },
+      {
           "id": "cordova-plugin-nativestorage.mainHandle",
           "file": "plugins/cordova-plugin-nativestorage/www/mainHandle.js",
           "pluginId": "cordova-plugin-nativestorage",
@@ -74,11 +82,27 @@
         ]
         },
       {
+          "id": "cordova-plugin-globalization.globalization",
+          "file": "plugins/cordova-plugin-globalization/www/globalization.js",
+          "pluginId": "cordova-plugin-globalization",
+        "clobbers": [
+          "navigator.globalization"
+        ]
+        },
+      {
           "id": "cordova-plugin-3dtouch.ThreeDeeTouch",
           "file": "plugins/cordova-plugin-3dtouch/www/ThreeDeeTouch.js",
           "pluginId": "cordova-plugin-3dtouch",
         "clobbers": [
           "ThreeDeeTouch"
+        ]
+        },
+      {
+          "id": "cordova-plugin-globalization.GlobalizationError",
+          "file": "plugins/cordova-plugin-globalization/www/GlobalizationError.js",
+          "pluginId": "cordova-plugin-globalization",
+        "clobbers": [
+          "window.GlobalizationError"
         ]
         },
       {
@@ -118,6 +142,8 @@
       "cordova-plugin-appavailability": "0.4.2",
       "cordova-plugin-badge": "0.8.9",
       "cordova-plugin-calendar": "5.1.6",
+      "cordova-plugin-fingerprint-aio": "5.0.1",
+      "cordova-plugin-globalization": "1.11.0",
       "cordova-plugin-nativestorage": "2.3.2"
     };
     // BOTTOM OF METADATA

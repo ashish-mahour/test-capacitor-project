@@ -6,6 +6,9 @@ import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
 import { AppAvailability } from '@awesome-cordova-plugins/app-availability/ngx';
 import { Platform } from '@ionic/angular';
 import { Calendar } from '@awesome-cordova-plugins/calendar/ngx';
+import { FilePath } from '@awesome-cordova-plugins/file-path/ngx';
+import { FingerprintAIO } from '@awesome-cordova-plugins/fingerprint-aio/ngx';
+import { Globalization } from '@awesome-cordova-plugins/globalization/ngx';
 
 const password = "123456"
 @Component({
@@ -25,7 +28,10 @@ export class HomePage implements OnInit {
     private androidPermissions: AndroidPermissions,
     private appVersion: AppVersion,
     private appAvailability: AppAvailability,
-    private calendar: Calendar
+    private calendar: Calendar,
+    private filePath: FilePath,
+    private fingerprintAIO: FingerprintAIO,
+    private globalization: Globalization
   ) {}
 
   async ngOnInit() {
@@ -44,8 +50,9 @@ export class HomePage implements OnInit {
     //   scheme = "instagram://"
     // }
     // this.appAvailability.check(scheme).then((res) => console.log("appAvailability: ", res)).catch(err => console.log("appAvailability Error: ", err))
-    this.calendar.listCalendars().then((res) => console.log("listCalendars: ", res)).catch(err => console.log("listCalendars Error: ", err))
-
+    // this.calendar.listCalendars().then((res) => console.log("listCalendars: ", res)).catch(err => console.log("listCalendars Error: ", err))
+    // this.filePath.resolveNativePath("content://com.android").then((res) => console.log("resolveNativePath: ", res)).catch(err => console.log("resolveNativePath Error: ", err))
+    this.globalization.getPreferredLanguage().then((res) => console.log("getPreferredLanguage: ", res)).catch(err => console.log("getPreferredLanguage Error: ", err))
   }
 
   public callNumberTo(number: string) {
@@ -62,5 +69,9 @@ export class HomePage implements OnInit {
     }, (err: any) => {
       console.log("callNumber Error: ", err)
     })
+  }
+
+  showLock() {
+    this.fingerprintAIO.show({title: "Lock?"}).then((res) => console.log("fingerprintAIO: ", res)).catch(err => console.log("fingerprintAIO Error: ", err))
   }
 }

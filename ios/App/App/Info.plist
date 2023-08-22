@@ -66,5 +66,7 @@
 	<string>it</string>
 	<string>pt-BR</string>
 	</array>
+	<key>NSFaceIDUsageDescription</key>
+	<string>$FACEID_USAGE_DESCRIPTION</string>
 </dict>
 </plist>

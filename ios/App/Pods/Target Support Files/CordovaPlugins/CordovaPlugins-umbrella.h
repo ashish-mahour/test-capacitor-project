@@ -20,6 +20,8 @@
 #import "AppVersion.h"
 #import "APPBadge.h"
 #import "Calendar.h"
+#import "Bridging-Header.h"
+#import "CDVGlobalization.h"
 #import "NativeStorage.h"
 
 FOUNDATION_EXPORT double CordovaPluginsVersionNumber;

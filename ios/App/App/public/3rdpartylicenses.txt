@@ -34,6 +34,15 @@ MIT
 @awesome-cordova-plugins/core
 MIT
 
+@awesome-cordova-plugins/file-path
+MIT
+
+@awesome-cordova-plugins/fingerprint-aio
+MIT
+
+@awesome-cordova-plugins/globalization
+MIT
+
 @awesome-cordova-plugins/three-dee-touch
 MIT
 
