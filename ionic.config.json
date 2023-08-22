@@ -1,5 +1,5 @@
 {
-  "name": "test-capacitor-project",
+  "name": "TestApp",
   "integrations": {
     "capacitor": {}
   },
