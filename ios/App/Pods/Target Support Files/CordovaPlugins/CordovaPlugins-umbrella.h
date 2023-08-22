@@ -17,9 +17,9 @@
 #import "AES256-Plugin-Bridging-Header.h"
 #import "AppAvailability.h"
 #import "ExitApp.h"
-#import "CDVAppRate.h"
 #import "AppVersion.h"
-#import "CDVNotification.h"
+#import "APPBadge.h"
+#import "Calendar.h"
 #import "NativeStorage.h"
 
 FOUNDATION_EXPORT double CordovaPluginsVersionNumber;

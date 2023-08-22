@@ -17,7 +17,6 @@ PODS:
     - CordovaPlugins/noarc (= 5.2.3)
   - CordovaPlugins/noarc (5.2.3):
     - CapacitorCordova
-  - CordovaPluginsResources (0.0.105)
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
@@ -28,7 +27,6 @@ DEPENDENCIES:
   - "CapacitorKeyboard (from `../../node_modules/@capacitor/keyboard`)"
   - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
   - CordovaPlugins (from `../capacitor-cordova-ios-plugins`)
-  - CordovaPluginsResources (from `../capacitor-cordova-ios-plugins`)
 
 EXTERNAL SOURCES:
   Capacitor:
@@ -47,8 +45,6 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/status-bar"
   CordovaPlugins:
     :path: "../capacitor-cordova-ios-plugins"
-  CordovaPluginsResources:
-    :path: "../capacitor-cordova-ios-plugins"
 
 SPEC CHECKSUMS:
   Capacitor: 6f44cbc33839b8a4202b8eac97041fe584083417
@@ -58,9 +54,8 @@ SPEC CHECKSUMS:
   CapacitorHaptics: 1fffc1217c7e64a472d7845be50fb0c2f7d4204c
   CapacitorKeyboard: b978154b024a5f65e044908e37d15b7de58b9d12
   CapacitorStatusBar: 565c0a1ebd79bb40d797606a8992b4a105885309
-  CordovaPlugins: 586387db586fa9ab10d44fa18f2966f48e1d4eda
-  CordovaPluginsResources: 1b3992e05cb6336d2850cd77dd5e3054f2f76f96
+  CordovaPlugins: 2f5f951676fa0fe99a5d1c13c57782acfd489015
 
-PODFILE CHECKSUM: 14696276bb616b84d1ddff84c45826cdae0509c2
+PODFILE CHECKSUM: 4242c9893484bae234dbfc81eb60ec88e284ffbb
 
 COCOAPODS: 1.11.3

@@ -46,13 +46,14 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
     implementation "org.apache.cordova:framework:$cordovaAndroidVersion"
     // SUB-PROJECT DEPENDENCIES START
-    implementation "com.google.android.play:core:1.+"
+
     // SUB-PROJECT DEPENDENCIES END
 }
 
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "cordova.variables.gradle"
 apply from: "../../node_modules/cordova-plugin-aes256-encryption/src/android/plugin.gradle"
+apply from: "../../node_modules/cordova-plugin-badge/src/android/badge.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 for (def func : cdvPluginPostBuildExtras) {

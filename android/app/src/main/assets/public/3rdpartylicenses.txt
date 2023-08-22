@@ -25,6 +25,9 @@ MIT
 @awesome-cordova-plugins/app-version
 MIT
 
+@awesome-cordova-plugins/calendar
+MIT
+
 @awesome-cordova-plugins/call-number
 MIT
 

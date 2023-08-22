@@ -10,6 +10,14 @@
         ]
         },
       {
+          "id": "cordova-plugin-calendar.Calendar",
+          "file": "plugins/cordova-plugin-calendar/www/Calendar.js",
+          "pluginId": "cordova-plugin-calendar",
+        "clobbers": [
+          "Calendar"
+        ]
+        },
+      {
           "id": "mx.ferreyra.callnumber.CallNumber",
           "file": "plugins/mx.ferreyra.callnumber/www/CallNumber.js",
           "pluginId": "mx.ferreyra.callnumber",
@@ -42,6 +50,14 @@
         ]
         },
       {
+          "id": "cordova-plugin-badge.Badge",
+          "file": "plugins/cordova-plugin-badge/www/badge.js",
+          "pluginId": "cordova-plugin-badge",
+        "clobbers": [
+          "cordova.plugins.notification.badge"
+        ]
+        },
+      {
           "id": "cordova-plugin-android-permissions.Permissions",
           "file": "plugins/cordova-plugin-android-permissions/www/permissions-dummy.js",
           "pluginId": "cordova-plugin-android-permissions",
@@ -66,30 +82,9 @@
         ]
         },
       {
-          "id": "cordova-plugin-apprate.AppRate",
-          "file": "plugins/cordova-plugin-apprate/www/AppRate.js",
-          "pluginId": "cordova-plugin-apprate",
-        "clobbers": [
-          "AppRate",
-          "window.AppRate"
-        ]
-        },
-      {
           "id": "cordova-base64-to-gallery.object.assign-polyfill",
           "file": "plugins/cordova-base64-to-gallery/www/object.assign-polyfill.js",
           "pluginId": "cordova-base64-to-gallery"
-        },
-      {
-          "id": "cordova-plugin-apprate.locales",
-          "file": "plugins/cordova-plugin-apprate/www/locales.js",
-          "pluginId": "cordova-plugin-apprate",
-        "runs": true
-        },
-      {
-          "id": "cordova-plugin-apprate.storage",
-          "file": "plugins/cordova-plugin-apprate/www/storage.js",
-          "pluginId": "cordova-plugin-apprate",
-        "runs": true
         },
       {
           "id": "cordova-plugin-nativestorage.LocalStorageHandle",
@@ -108,14 +103,6 @@
         "merges": [
           "navigator.app"
         ]
-        },
-      {
-          "id": "cordova-plugin-dialogs.notification",
-          "file": "plugins/cordova-plugin-dialogs/www/notification.js",
-          "pluginId": "cordova-plugin-dialogs",
-        "merges": [
-          "navigator.notification"
-        ]
         }
     ];
     module.exports.metadata =
@@ -129,8 +116,8 @@
       "cordova-plugin-app-exit": "0.0.1",
       "cordova-plugin-app-version": "0.1.14",
       "cordova-plugin-appavailability": "0.4.2",
-      "cordova-plugin-apprate": "1.7.2",
-      "cordova-plugin-dialogs": "2.0.2",
+      "cordova-plugin-badge": "0.8.9",
+      "cordova-plugin-calendar": "5.1.6",
       "cordova-plugin-nativestorage": "2.3.2"
     };
     // BOTTOM OF METADATA

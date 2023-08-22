@@ -12,8 +12,7 @@
     s.xcconfig = {'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) COCOAPODS=1 WK_WEB_VIEW_ONLY=1' }
     s.dependency 'CapacitorCordova'
     s.swift_version  = '5.1'
-    s.weak_frameworks = 'AudioToolbox'
-    s.frameworks = 'Security', 'StoreKit'
+    s.frameworks = 'Security', 'EventKit', 'EventKitUI'
     s.compiler_flags = '-fno-objc-arc'
     s.subspec 'noarc' do |sna|
       sna.requires_arc = false

@@ -5,6 +5,7 @@ import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
 import { AppAvailability } from '@awesome-cordova-plugins/app-availability/ngx';
 import { Platform } from '@ionic/angular';
+import { Calendar } from '@awesome-cordova-plugins/calendar/ngx';
 
 const password = "123456"
 @Component({
@@ -23,7 +24,8 @@ export class HomePage implements OnInit {
     private aes256: AES256,
     private androidPermissions: AndroidPermissions,
     private appVersion: AppVersion,
-    private appAvailability: AppAvailability
+    private appAvailability: AppAvailability,
+    private calendar: Calendar
   ) {}
 
   async ngOnInit() {
@@ -34,15 +36,16 @@ export class HomePage implements OnInit {
     //   this.aes256.decrypt(this.secureKey, this.secureIV, res).then((res) => console.log("decrypt: ", res)).catch(err => console.log("decrypt Error: ", err))
     // }).catch(err => console.log("encrypt Error: ", err))
     // this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then((res) => console.log("checkPermission: ", res)).catch(err => console.log("checkPermission Error: ", err))
-    this.appVersion.getVersionNumber().then((res) => console.log("getVersionNumber: ", res)).catch(err => console.log("getVersionNumber Error: ", err))
-    let scheme = null
-    if (this.platform.is("android")) {
-      scheme = "com.instagram.android"
-    } else {
-      scheme = "instagram://"
-    }
-    this.appAvailability.check(scheme).then((res) => console.log("appAvailability: ", res)).catch(err => console.log("appAvailability Error: ", err))
-    
+    // this.appVersion.getVersionNumber().then((res) => console.log("getVersionNumber: ", res)).catch(err => console.log("getVersionNumber Error: ", err))
+    // let scheme = null
+    // if (this.platform.is("android")) {
+    //   scheme = "com.instagram.android"
+    // } else {
+    //   scheme = "instagram://"
+    // }
+    // this.appAvailability.check(scheme).then((res) => console.log("appAvailability: ", res)).catch(err => console.log("appAvailability Error: ", err))
+    this.calendar.listCalendars().then((res) => console.log("listCalendars: ", res)).catch(err => console.log("listCalendars Error: ", err))
+
   }
 
   public callNumberTo(number: string) {
@@ -51,5 +54,13 @@ export class HomePage implements OnInit {
 
   exitApp() {
     (<any>navigator)["app"].exitApp();
+  }
+
+  pickContact() {
+    (<any>navigator).contacts.pickContact((res: any) => {
+      console.log("pickContact: ", res)
+    }, (err: any) => {
+      console.log("callNumber Error: ", err)
+    })
   }
 }

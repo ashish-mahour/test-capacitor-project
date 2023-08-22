@@ -12,6 +12,8 @@ import { AES256 } from '@awesome-cordova-plugins/aes-256/ngx';
 import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
 import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 import { AppAvailability } from '@awesome-cordova-plugins/app-availability/ngx';
+import { Calendar } from '@awesome-cordova-plugins/calendar/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +25,9 @@ import { AppAvailability } from '@awesome-cordova-plugins/app-availability/ngx';
     AES256,
     AndroidPermissions,
     AppVersion,
-    AppAvailability
+    AppAvailability,
+    Calendar,
+    
   ],
   bootstrap: [AppComponent],
 })
