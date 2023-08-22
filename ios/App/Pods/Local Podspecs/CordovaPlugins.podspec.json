@@ -24,7 +24,11 @@
     ]
   },
   "swift_versions": "5.1",
-  "frameworks": "Security",
+  "weak_frameworks": "AudioToolbox",
+  "frameworks": [
+    "Security",
+    "StoreKit"
+  ],
   "compiler_flags": "-fno-objc-arc",
   "subspecs": [
     {

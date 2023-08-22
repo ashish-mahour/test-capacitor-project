@@ -22,5 +22,25 @@
     <param name="android-package" value="org.apache.cordova.exitapp.ExitApp"/>
   </feature>
 
+  <feature name="AppVersion">
+    <param name="android-package" value="uk.co.whiteoctober.cordova.AppVersion"/>
+  </feature>
+
+  <feature name="AppAvailability">
+    <param name="android-package" value="com.ohh2ahh.appavailability.AppAvailability"/>
+  </feature>
+
+  <feature name="AppRate">
+    <param name="android-package" value="org.pushandplay.cordova.apprate.AppRate"/>
+  </feature>
+
+  <feature name="Notification">
+    <param name="android-package" value="org.apache.cordova.dialogs.Notification"/>
+  </feature>
+
+  <feature name="NativeStorage">
+    <param name="android-package" value="NativeStorage"/>
+  </feature>
+
   
 </widget>

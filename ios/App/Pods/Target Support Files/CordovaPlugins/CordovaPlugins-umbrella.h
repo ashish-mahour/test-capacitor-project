@@ -15,7 +15,12 @@
 #import "AppDelegate+threedeetouch.h"
 #import "ThreeDeeTouch.h"
 #import "AES256-Plugin-Bridging-Header.h"
+#import "AppAvailability.h"
 #import "ExitApp.h"
+#import "CDVAppRate.h"
+#import "AppVersion.h"
+#import "CDVNotification.h"
+#import "NativeStorage.h"
 
 FOUNDATION_EXPORT double CordovaPluginsVersionNumber;
 FOUNDATION_EXPORT const unsigned char CordovaPluginsVersionString[];

@@ -10,6 +10,8 @@ import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
 import { ThreeDeeTouch } from '@awesome-cordova-plugins/three-dee-touch/ngx';
 import { AES256 } from '@awesome-cordova-plugins/aes-256/ngx';
 import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
+import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
+import { AppAvailability } from '@awesome-cordova-plugins/app-availability/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +21,9 @@ import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions
     CallNumber, 
     ThreeDeeTouch, 
     AES256,
-    AndroidPermissions
+    AndroidPermissions,
+    AppVersion,
+    AppAvailability
   ],
   bootstrap: [AppComponent],
 })

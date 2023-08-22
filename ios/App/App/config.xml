@@ -24,5 +24,25 @@
     <param name="ios-package" value="ExitApp"/>
   </feature>
 
+  <feature name="AppVersion">
+    <param name="ios-package" value="AppVersion"/>
+  </feature>
+
+  <feature name="AppAvailability">
+    <param name="ios-package" value="AppAvailability"/>
+  </feature>
+
+  <feature name="AppRate">
+    <param name="ios-package" value="CDVAppRate"/>
+  </feature>
+
+  <feature name="Notification">
+    <param name="ios-package" value="CDVNotification"/>
+  </feature>
+
+  <feature name="NativeStorage">
+    <param name="ios-package" value="NativeStorage"/>
+  </feature>
+
   
 </widget>

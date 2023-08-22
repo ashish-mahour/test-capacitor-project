@@ -19,6 +19,12 @@ MIT
 @awesome-cordova-plugins/android-permissions
 MIT
 
+@awesome-cordova-plugins/app-availability
+MIT
+
+@awesome-cordova-plugins/app-version
+MIT
+
 @awesome-cordova-plugins/call-number
 MIT
 
