@@ -48,7 +48,7 @@ SPEC CHECKSUMS:
   CapacitorHaptics: 1fffc1217c7e64a472d7845be50fb0c2f7d4204c
   CapacitorKeyboard: b978154b024a5f65e044908e37d15b7de58b9d12
   CapacitorStatusBar: 565c0a1ebd79bb40d797606a8992b4a105885309
-  CordovaPlugins: f16c1141796afeccdbbd0812d43fa8cc74b29c42
+  CordovaPlugins: 5216015e7aeb757e6c429cafa9c8bad9f724cccd
 
 PODFILE CHECKSUM: 0381d09167db361ed446a10f049fd27bab1b40b1
 

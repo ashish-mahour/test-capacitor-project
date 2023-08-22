@@ -13,16 +13,18 @@ export class AppComponent {
     private threeDeeTouch: ThreeDeeTouch
   ) {
     this.platform.ready().then(() => {
-      this.threeDeeTouch.isAvailable().then(rs => {
-        console.log("isAvailable::>", rs);
-        this.threeDeeTouch.configureQuickActions([
-          {
-            title: "Item 1",
-            iconTemplate: "item",
-            type: "item",
-          }
-        ]);
-      }).catch(e => {});
+      if (this.platform.is("ios")) {
+        this.threeDeeTouch.isAvailable().then(rs => {
+          console.log("isAvailable::>", rs);
+          this.threeDeeTouch.configureQuickActions([
+            {
+              title: "Item 1",
+              iconTemplate: "item",
+              type: "item",
+            }
+          ]);
+        }).catch(e => {});
+      }
     })
   }
 }

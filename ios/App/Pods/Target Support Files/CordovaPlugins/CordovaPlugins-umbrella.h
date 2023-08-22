@@ -14,6 +14,8 @@
 #import "Base64ToGallery.h"
 #import "AppDelegate+threedeetouch.h"
 #import "ThreeDeeTouch.h"
+#import "AES256-Plugin-Bridging-Header.h"
+#import "ExitApp.h"
 
 FOUNDATION_EXPORT double CordovaPluginsVersionNumber;
 FOUNDATION_EXPORT const unsigned char CordovaPluginsVersionString[];

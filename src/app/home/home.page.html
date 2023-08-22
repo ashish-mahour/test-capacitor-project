@@ -7,7 +7,16 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
- <ion-button (click)="callNumberTo('8860405864')">
-  Call
- </ion-button>
+  <ion-grid>
+    <ion-row>
+      <ion-button (click)="callNumberTo('8860405864')">
+        Call
+       </ion-button>
+    </ion-row>
+    <ion-row>
+      <ion-button (click)="exitApp()">
+        Exit App
+       </ion-button>
+    </ion-row>
+  </ion-grid>
 </ion-content>

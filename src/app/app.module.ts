@@ -8,11 +8,19 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
 import { ThreeDeeTouch } from '@awesome-cordova-plugins/three-dee-touch/ngx';
+import { AES256 } from '@awesome-cordova-plugins/aes-256/ngx';
+import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, CallNumber, ThreeDeeTouch],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, 
+    CallNumber, 
+    ThreeDeeTouch, 
+    AES256,
+    AndroidPermissions
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

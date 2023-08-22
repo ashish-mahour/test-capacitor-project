@@ -24,6 +24,7 @@
     ]
   },
   "swift_versions": "5.1",
+  "frameworks": "Security",
   "compiler_flags": "-fno-objc-arc",
   "subspecs": [
     {

@@ -52,6 +52,7 @@ dependencies {
 
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "cordova.variables.gradle"
+apply from: "../../node_modules/cordova-plugin-aes256-encryption/src/android/plugin.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 for (def func : cdvPluginPostBuildExtras) {

@@ -18,16 +18,44 @@
         ]
         },
       {
+          "id": "cordova-plugin-aes256-encryption.AES256",
+          "file": "plugins/cordova-plugin-aes256-encryption/www/AES256.js",
+          "pluginId": "cordova-plugin-aes256-encryption",
+        "clobbers": [
+          "cordova.plugins.AES256"
+        ]
+        },
+      {
+          "id": "cordova-plugin-android-permissions.Permissions",
+          "file": "plugins/cordova-plugin-android-permissions/www/permissions.js",
+          "pluginId": "cordova-plugin-android-permissions",
+        "clobbers": [
+          "cordova.plugins.permissions"
+        ]
+        },
+      {
           "id": "cordova-base64-to-gallery.object.assign-polyfill",
           "file": "plugins/cordova-base64-to-gallery/www/object.assign-polyfill.js",
           "pluginId": "cordova-base64-to-gallery"
+        },
+      {
+          "id": "cordova-plugin-app-exit.exitApp",
+          "file": "plugins/cordova-plugin-app-exit/www/ExitApp.js",
+          "pluginId": "cordova-plugin-app-exit",
+        "merges": [
+          "navigator.app"
+        ]
         }
     ];
     module.exports.metadata =
     // TOP OF METADATA
     {
+      "cordova-plugin-android-permissions": "1.1.5",
       "mx.ferreyra.callnumber": "0.0.2",
-      "cordova-base64-to-gallery": "4.1.3"
+      "cordova-base64-to-gallery": "4.1.3",
+      "cordova-plugin-aes256-encryption": "1.2.2",
+      "cordova-plugin-androidx-adapter": "1.1.3",
+      "cordova-plugin-app-exit": "0.0.1"
     };
     // BOTTOM OF METADATA
     });
