@@ -17,6 +17,16 @@
   <!-- add to homescreen for ios -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <script>
+    document.addEventListener('deviceready', function () {
+      ThreeDeeTouch.onHomeIconPressed = function (payload) {
+        console.log("Index Payload::>", JSON.stringify(payload));
+        if (payload) {
+          localStorage.setItem("payload", JSON.stringify(payload));
+        }
+      }
+    }, false);
+  </script>
 </head>
 
 <body>
