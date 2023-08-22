@@ -9,9 +9,16 @@
 <ion-content [fullscreen]="true">
   <ion-grid>
     <ion-row>
-      <ion-button (click)="callNumberTo('8860405864')">
-        Call
-       </ion-button>
+      <ion-col>
+        <ion-button (click)="callNumberTo('8860405864')">
+          Call
+         </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="openPlayStore()">
+          App Store / Play Store
+         </ion-button>
+      </ion-col>
     </ion-row>
     <ion-row>
       <ion-button (click)="exitApp()">

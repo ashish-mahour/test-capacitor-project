@@ -7,6 +7,11 @@
     <param name="onload" value="true"/>
   </feature>
 
+  <feature name="IRoot">
+    <param name="ios-package" value="IRoot"/>
+    <param name="onload" value="true"/>
+  </feature>
+
   <feature name="CallNumber">
     <param name="ios-package" value="CFCallNumber"/>
   </feature>
@@ -46,6 +51,14 @@
 
   <feature name="Globalization">
     <param name="ios-package" value="CDVGlobalization"/>
+  </feature>
+
+  <feature name="Market">
+    <param name="ios-package" value="CDVMarket"/>
+  </feature>
+
+  <feature name="NativeGeocoder">
+    <param name="ios-package" value="NativeGeocoder"/>
   </feature>
 
   <feature name="NativeStorage">

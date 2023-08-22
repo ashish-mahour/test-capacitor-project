@@ -9,6 +9,9 @@ import { Calendar } from '@awesome-cordova-plugins/calendar/ngx';
 import { FilePath } from '@awesome-cordova-plugins/file-path/ngx';
 import { FingerprintAIO } from '@awesome-cordova-plugins/fingerprint-aio/ngx';
 import { Globalization } from '@awesome-cordova-plugins/globalization/ngx';
+import { Market } from '@awesome-cordova-plugins/market/ngx';
+import { NativeGeocoder, NativeGeocoderOptions } from '@awesome-cordova-plugins/native-geocoder/ngx';
+import { Geolocation } from "@capacitor/geolocation";
 
 const password = "123456"
 @Component({
@@ -31,7 +34,9 @@ export class HomePage implements OnInit {
     private calendar: Calendar,
     private filePath: FilePath,
     private fingerprintAIO: FingerprintAIO,
-    private globalization: Globalization
+    private globalization: Globalization,
+    private market: Market,
+    private nativeGeocoder: NativeGeocoder
   ) {}
 
   async ngOnInit() {
@@ -52,7 +57,20 @@ export class HomePage implements OnInit {
     // this.appAvailability.check(scheme).then((res) => console.log("appAvailability: ", res)).catch(err => console.log("appAvailability Error: ", err))
     // this.calendar.listCalendars().then((res) => console.log("listCalendars: ", res)).catch(err => console.log("listCalendars Error: ", err))
     // this.filePath.resolveNativePath("content://com.android").then((res) => console.log("resolveNativePath: ", res)).catch(err => console.log("resolveNativePath Error: ", err))
-    this.globalization.getPreferredLanguage().then((res) => console.log("getPreferredLanguage: ", res)).catch(err => console.log("getPreferredLanguage Error: ", err))
+    this.globalization.getPreferredLanguage().then((res) => console.log("getPreferredLanguage: ", res)).catch(err => console.log("getPreferredLanguage Error: ", err));
+    (<any> window).IRoot.isRooted((res: any) => {
+      console.log("isRooted: ", res)
+    }, (err: any) => {
+      console.log("isRooted Error: ", err)
+    });
+    Geolocation.getCurrentPosition().then(position => {
+      console.log("getCurrentPosition: ", position)
+      const options: NativeGeocoderOptions = {
+        useLocale: true,
+        maxResults: 1
+      };
+     this.nativeGeocoder.reverseGeocode(position.coords.latitude, position.coords.longitude, options).then((res) => console.log("reverseGeocode: ", res)).catch(err => console.log("reverseGeocode Error: ", err));;
+    }).catch(err => console.log("getCurrentPosition Error: ", err));
   }
 
   public callNumberTo(number: string) {
@@ -73,5 +91,14 @@ export class HomePage implements OnInit {
 
   showLock() {
     this.fingerprintAIO.show({title: "Lock?"}).then((res) => console.log("fingerprintAIO: ", res)).catch(err => console.log("fingerprintAIO Error: ", err))
+  }
+
+  openPlayStore() {
+    if (this.platform.is("ios")) {
+      this.market.open("id310633997").then((res) => console.log("market.open: ", res)).catch(err => console.log("market.open Error: ", err))
+    } else {
+      console.log("Opening Market.")
+      this.market.open("com.whatsapp").then((res) => console.log("market.open: ", res)).catch(err => console.log("market.open Error: ", err))
+    }
   }
 }

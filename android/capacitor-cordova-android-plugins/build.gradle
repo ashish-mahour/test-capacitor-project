@@ -52,6 +52,7 @@ dependencies {
 
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "cordova.variables.gradle"
+apply from: "../../node_modules/cordova-plugin-iroot/src/android/build-extras.gradle"
 apply from: "../../node_modules/cordova-plugin-aes256-encryption/src/android/plugin.gradle"
 apply from: "../../node_modules/cordova-plugin-badge/src/android/badge.gradle"
 apply from: "../../node_modules/cordova-plugin-fingerprint-aio/src/android/build.gradle"

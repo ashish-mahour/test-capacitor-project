@@ -27,7 +27,8 @@
   "frameworks": [
     "Security",
     "EventKit",
-    "EventKitUI"
+    "EventKitUI",
+    "CoreLocation"
   ],
   "compiler_flags": "-fno-objc-arc",
   "subspecs": [

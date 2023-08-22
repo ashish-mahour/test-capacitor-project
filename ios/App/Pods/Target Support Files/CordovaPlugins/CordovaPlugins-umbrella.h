@@ -22,6 +22,8 @@
 #import "Calendar.h"
 #import "Bridging-Header.h"
 #import "CDVGlobalization.h"
+#import "IRoot.h"
+#import "CDVMarket.h"
 #import "NativeStorage.h"
 
 FOUNDATION_EXPORT double CordovaPluginsVersionNumber;

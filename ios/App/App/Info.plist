@@ -56,7 +56,7 @@
 	<key>NSContactsUsageDescription</key>
 	<string>$CONTACTS_USAGE_DESCRIPTION</string>
 	<key>NSCalendarsUsageDescription</key>
-	<string>$CALENDAR_USAGE_DESCRIPTION</string>
+	<string>Using Calender?</string>
 	<key>CFBundleLocalizations</key>
 	<array>
 	<string>en</string>
@@ -67,6 +67,8 @@
 	<string>pt-BR</string>
 	</array>
 	<key>NSFaceIDUsageDescription</key>
-	<string>$FACEID_USAGE_DESCRIPTION</string>
+	<string>Checking Face ID?</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Checking Location?</string>
 </dict>
 </plist>

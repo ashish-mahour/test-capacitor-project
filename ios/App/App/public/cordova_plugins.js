@@ -50,6 +50,14 @@
         ]
         },
       {
+          "id": "cordova-plugin-market.Market",
+          "file": "plugins/cordova-plugin-market/www/market.js",
+          "pluginId": "cordova-plugin-market",
+        "clobbers": [
+          "cordova.plugins.market"
+        ]
+        },
+      {
           "id": "cordova-plugin-badge.Badge",
           "file": "plugins/cordova-plugin-badge/www/badge.js",
           "pluginId": "cordova-plugin-badge",
@@ -71,6 +79,22 @@
           "pluginId": "cordova-plugin-fingerprint-aio",
         "clobbers": [
           "Fingerprint"
+        ]
+        },
+      {
+          "id": "cordova-plugin-iroot.IRoot",
+          "file": "plugins/cordova-plugin-iroot/www/iroot.js",
+          "pluginId": "cordova-plugin-iroot",
+        "clobbers": [
+          "IRoot"
+        ]
+        },
+      {
+          "id": "cordova-plugin-nativegeocoder.NativeGeocoder",
+          "file": "plugins/cordova-plugin-nativegeocoder/www/NativeGeocoder.js",
+          "pluginId": "cordova-plugin-nativegeocoder",
+        "clobbers": [
+          "nativegeocoder"
         ]
         },
       {
@@ -134,6 +158,7 @@
     {
       "cordova-plugin-3dtouch": "1.3.8",
       "cordova-plugin-android-permissions": "1.1.5",
+      "cordova-plugin-iroot": "3.1.0",
       "mx.ferreyra.callnumber": "0.0.2",
       "cordova-base64-to-gallery": "4.1.3",
       "cordova-plugin-aes256-encryption": "1.2.2",
@@ -144,6 +169,8 @@
       "cordova-plugin-calendar": "5.1.6",
       "cordova-plugin-fingerprint-aio": "5.0.1",
       "cordova-plugin-globalization": "1.11.0",
+      "cordova-plugin-market": "1.2.0",
+      "cordova-plugin-nativegeocoder": "3.5.1",
       "cordova-plugin-nativestorage": "2.3.2"
     };
     // BOTTOM OF METADATA

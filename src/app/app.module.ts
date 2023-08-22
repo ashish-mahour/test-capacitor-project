@@ -16,6 +16,8 @@ import { Calendar } from '@awesome-cordova-plugins/calendar/ngx';
 import { FilePath } from '@awesome-cordova-plugins/file-path/ngx';
 import { FingerprintAIO } from '@awesome-cordova-plugins/fingerprint-aio/ngx';
 import { Globalization } from '@awesome-cordova-plugins/globalization/ngx';
+import { Market } from '@awesome-cordova-plugins/market/ngx';
+import { NativeGeocoder } from '@awesome-cordova-plugins/native-geocoder/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +33,9 @@ import { Globalization } from '@awesome-cordova-plugins/globalization/ngx';
     Calendar,
     FilePath,
     FingerprintAIO,
-    Globalization
+    Globalization,
+    Market,
+    NativeGeocoder
   ],
   bootstrap: [AppComponent],
 })
