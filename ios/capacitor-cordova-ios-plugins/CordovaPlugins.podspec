@@ -13,7 +13,19 @@
     s.dependency 'CapacitorCordova'
     s.swift_version  = '5.1'
     s.frameworks = 'Security', 'EventKit', 'EventKitUI', 'CoreLocation'
-    s.compiler_flags = '-fno-objc-arc'
+    s.compiler_flags = '-fno-objc-arc -DSQLITE_HAS_CODEC -w -w
+                                     -DSQLITE_HAS_CODEC -DHAVE_USLEEP=1
+                                     -DSQLITE_TEMP_STORE=3
+                                     -DSQLCIPHER_CRYPTO_CC -DSQLITE_LOCKING_STYLE=1 -DNDEBUG
+                                     -DSQLITE_THREADSAFE=1
+                                     -DSQLITE_DEFAULT_SYNCHRONOUS=3
+                                     -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_OMIT_DECLTYPE
+                                     -DSQLITE_OMIT_DEPRECATED
+                                     -DSQLITE_OMIT_PROGRESS_CALLBACK -DSQLITE_OMIT_SHARED_CACHE -DSQLITE_OMIT_LOAD_EXTENSION
+                                     -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_RTREE
+                                     -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_JSON1
+                                     -DSQLITE_ENABLE_MATH_FUNCTIONS
+                                    '
     s.subspec 'noarc' do |sna|
       sna.requires_arc = false
       sna.source_files = 'noarc/**/*.{swift,h,m,c,cc,mm,cpp}'

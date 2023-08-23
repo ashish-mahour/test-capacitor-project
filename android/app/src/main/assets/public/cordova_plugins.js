@@ -26,6 +26,14 @@
         ]
         },
       {
+          "id": "call-number.CallNumber",
+          "file": "plugins/call-number/www/CallNumber.js",
+          "pluginId": "call-number",
+        "clobbers": [
+          "call"
+        ]
+        },
+      {
           "id": "cordova-base64-to-gallery.base64ToGallery",
           "file": "plugins/cordova-base64-to-gallery/www/base64ToGallery.js",
           "pluginId": "cordova-base64-to-gallery",
@@ -71,6 +79,14 @@
           "pluginId": "cordova-plugin-android-permissions",
         "clobbers": [
           "cordova.plugins.permissions"
+        ]
+        },
+      {
+          "id": "cordova-plugin-sms-retriever.SMSRetriever",
+          "file": "plugins/cordova-plugin-sms-retriever/www/SMSRetriever.js",
+          "pluginId": "cordova-plugin-sms-retriever",
+        "clobbers": [
+          "cordova.plugins.SMSRetriever"
         ]
         },
       {
@@ -122,6 +138,14 @@
         ]
         },
       {
+          "id": "cordova-sqlcipher-adapter.SQLitePlugin",
+          "file": "plugins/cordova-sqlcipher-adapter/www/SQLitePlugin.js",
+          "pluginId": "cordova-sqlcipher-adapter",
+        "clobbers": [
+          "SQLitePlugin"
+        ]
+        },
+      {
           "id": "cordova-plugin-filepath.FilePath",
           "file": "plugins/cordova-plugin-filepath/www/FilePath.js",
           "pluginId": "cordova-plugin-filepath",
@@ -167,6 +191,22 @@
         "merges": [
           "navigator.app"
         ]
+        },
+      {
+          "id": "com.darktalker.cordova.screenshot.screenshot",
+          "file": "plugins/com.darktalker.cordova.screenshot/www/Screenshot.js",
+          "pluginId": "com.darktalker.cordova.screenshot",
+        "merges": [
+          "navigator.screenshot"
+        ]
+        },
+      {
+          "id": "cordova-plugin-uniquedeviceid.UniqueDeviceID",
+          "file": "plugins/cordova-plugin-uniquedeviceid/www/uniqueid.js",
+          "pluginId": "cordova-plugin-uniquedeviceid",
+        "merges": [
+          "window.plugins.uniqueDeviceID"
+        ]
         }
     ];
     module.exports.metadata =
@@ -175,6 +215,7 @@
       "cordova-plugin-android-permissions": "1.1.5",
       "cordova-plugin-iroot": "3.1.0",
       "mx.ferreyra.callnumber": "0.0.2",
+      "com.darktalker.cordova.screenshot": "0.1.5",
       "cordova-base64-to-gallery": "4.1.3",
       "cordova-plugin-aes256-encryption": "1.2.2",
       "cordova-plugin-androidx-adapter": "1.1.3",
@@ -190,8 +231,13 @@
       "cordova-plugin-nativegeocoder": "3.5.1",
       "cordova-plugin-nativestorage": "2.3.2",
       "cordova-plugin-networkinterface": "2.0.0",
+      "cordova-plugin-sms-retriever": "4.0.1",
       "cordova-plugin-tlc-play-integrity": "1.0.0",
-      "cordova-support-android-plugin": "2.0.4"
+      "cordova-plugin-uniquedeviceid": "1.3.2",
+      "cordova-sqlcipher-adapter": "0.6.0",
+      "cordova-support-android-plugin": "2.0.4",
+      "call-number": "0.0.2",
+      "phonegap-plugin-multidex": "1.0.0"
     };
     // BOTTOM OF METADATA
     });

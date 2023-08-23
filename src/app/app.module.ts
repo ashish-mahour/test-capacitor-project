@@ -19,6 +19,8 @@ import { Globalization } from '@awesome-cordova-plugins/globalization/ngx';
 import { Market } from '@awesome-cordova-plugins/market/ngx';
 import { NativeGeocoder } from '@awesome-cordova-plugins/native-geocoder/ngx';
 import { NetworkInterface } from '@awesome-cordova-plugins/network-interface/ngx';
+import { SmsRetrieverApi } from 'awesome-cordova-plugins-sms-retriever-api/ngx';
+import { UniqueDeviceID } from '@awesome-cordova-plugins/unique-device-id/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,7 +39,9 @@ import { NetworkInterface } from '@awesome-cordova-plugins/network-interface/ngx
     Globalization,
     Market,
     NativeGeocoder,
-    NetworkInterface
+    NetworkInterface,
+    SmsRetrieverApi,
+    UniqueDeviceID
   ],
   bootstrap: [AppComponent],
 })

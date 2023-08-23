@@ -15,13 +15,16 @@ dependencies {
     implementation project(':capacitor-haptics')
     implementation project(':capacitor-keyboard')
     implementation project(':capacitor-status-bar')
-
+    implementation "com.google.android.gms:play-services-auth:20.5.0"
+    implementation "com.google.android.gms:play-services-auth-api-phone:18.0.1"
+    implementation "androidx.sqlite:sqlite:2.1.0"
 }
 apply from: "../../node_modules/cordova-plugin-iroot/src/android/build-extras.gradle"
 apply from: "../../node_modules/cordova-plugin-aes256-encryption/src/android/plugin.gradle"
 apply from: "../../node_modules/cordova-plugin-badge/src/android/badge.gradle"
 apply from: "../../node_modules/cordova-plugin-fingerprint-aio/src/android/build.gradle"
 apply from: "../../node_modules/cordova-plugin-tlc-play-integrity/src/android/build.gradle"
+apply from: "../../node_modules/phonegap-plugin-multidex/multidex.gradle"
 
 if (hasProperty('postBuildExtras')) {
   postBuildExtras()

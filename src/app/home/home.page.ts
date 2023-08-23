@@ -12,6 +12,8 @@ import { Globalization } from '@awesome-cordova-plugins/globalization/ngx';
 import { Market } from '@awesome-cordova-plugins/market/ngx';
 import { NativeGeocoder, NativeGeocoderOptions } from '@awesome-cordova-plugins/native-geocoder/ngx';
 import { Geolocation } from "@capacitor/geolocation";
+import { SmsRetrieverApi } from 'awesome-cordova-plugins-sms-retriever-api/ngx';
+import { UniqueDeviceID } from '@awesome-cordova-plugins/unique-device-id/ngx';
 
 const password = "123456"
 @Component({
@@ -36,7 +38,9 @@ export class HomePage implements OnInit {
     private fingerprintAIO: FingerprintAIO,
     private globalization: Globalization,
     private market: Market,
-    private nativeGeocoder: NativeGeocoder
+    private nativeGeocoder: NativeGeocoder,
+    private smsRetrieverApi: SmsRetrieverApi,
+    private uniqueDeviceID: UniqueDeviceID
   ) {}
 
   async ngOnInit() {
@@ -69,19 +73,21 @@ export class HomePage implements OnInit {
         useLocale: true,
         maxResults: 1
       };
-     this.nativeGeocoder.reverseGeocode(position.coords.latitude, position.coords.longitude, options).then((res) => console.log("reverseGeocode: ", res)).catch(err => console.log("reverseGeocode Error: ", err));;
+     this.nativeGeocoder.reverseGeocode(position.coords.latitude, position.coords.longitude, options).then((res) => console.log("reverseGeocode: ", res)).catch(err => console.log("reverseGeocode Error: ", err));
     }).catch(err => console.log("getCurrentPosition Error: ", err));
     if (this.platform.is("android")) {
       const nonce = this.randomString(16)
       console.log("this.nonce", nonce);
-        if ((<any> window).cordova?.plugins?.TLCPlayIntegrity) {
-          (<any> window).cordova.plugins.TLCPlayIntegrity.certifyKey(nonce, (result: any) => {
-            console.log("Play Integrity Result: ", result)
-          }, (error: any) => {
-            console.log("Play Integrity Error: ", error)
-          })
-        }
+        // if ((<any> window).cordova?.plugins?.TLCPlayIntegrity) {
+        //   (<any> window).cordova.plugins.TLCPlayIntegrity.certifyKey(nonce, (result: any) => {
+        //     console.log("Play Integrity Result: ", result)
+        //   }, (error: any) => {
+        //     console.log("Play Integrity Error: ", error)
+        //   })
+        // }
+        this.smsRetrieverApi.getHashString().then((res) => console.log("getHashString: ", res)).catch(err => console.log("getHashString Error: ", err));
       }
+      this.uniqueDeviceID.get().then((res) => console.log("uniqueDeviceID: ", res)).catch(err => console.log("uniqueDeviceID Error: ", err));
   }
 
   public callNumberTo(number: string) {
@@ -120,5 +126,11 @@ export class HomePage implements OnInit {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return text;
+  }
+
+  takeScreenshot() {
+    (<any>navigator).screenshot.URI((res: any, data: any) => {
+      console.log("screenshot: ", res, data)
+    }, 100)
   }
 }
