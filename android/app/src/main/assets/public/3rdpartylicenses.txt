@@ -49,6 +49,9 @@ MIT
 @awesome-cordova-plugins/native-geocoder
 MIT
 
+@awesome-cordova-plugins/network-interface
+MIT
+
 @awesome-cordova-plugins/three-dee-touch
 MIT
 

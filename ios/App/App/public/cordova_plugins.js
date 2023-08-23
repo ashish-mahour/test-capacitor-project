@@ -130,6 +130,14 @@
         ]
         },
       {
+          "id": "cordova-plugin-networkinterface.networkinterface",
+          "file": "plugins/cordova-plugin-networkinterface/www/networkinterface.js",
+          "pluginId": "cordova-plugin-networkinterface",
+        "clobbers": [
+          "window.networkinterface"
+        ]
+        },
+      {
           "id": "cordova-base64-to-gallery.object.assign-polyfill",
           "file": "plugins/cordova-base64-to-gallery/www/object.assign-polyfill.js",
           "pluginId": "cordova-base64-to-gallery"
@@ -171,7 +179,8 @@
       "cordova-plugin-globalization": "1.11.0",
       "cordova-plugin-market": "1.2.0",
       "cordova-plugin-nativegeocoder": "3.5.1",
-      "cordova-plugin-nativestorage": "2.3.2"
+      "cordova-plugin-nativestorage": "2.3.2",
+      "cordova-plugin-networkinterface": "2.0.0"
     };
     // BOTTOM OF METADATA
     });

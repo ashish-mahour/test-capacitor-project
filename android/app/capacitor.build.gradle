@@ -21,6 +21,7 @@ apply from: "../../node_modules/cordova-plugin-iroot/src/android/build-extras.gr
 apply from: "../../node_modules/cordova-plugin-aes256-encryption/src/android/plugin.gradle"
 apply from: "../../node_modules/cordova-plugin-badge/src/android/badge.gradle"
 apply from: "../../node_modules/cordova-plugin-fingerprint-aio/src/android/build.gradle"
+apply from: "../../node_modules/cordova-plugin-tlc-play-integrity/src/android/build.gradle"
 
 if (hasProperty('postBuildExtras')) {
   postBuildExtras()

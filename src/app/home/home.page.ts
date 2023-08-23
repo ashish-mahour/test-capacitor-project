@@ -71,6 +71,17 @@ export class HomePage implements OnInit {
       };
      this.nativeGeocoder.reverseGeocode(position.coords.latitude, position.coords.longitude, options).then((res) => console.log("reverseGeocode: ", res)).catch(err => console.log("reverseGeocode Error: ", err));;
     }).catch(err => console.log("getCurrentPosition Error: ", err));
+    if (this.platform.is("android")) {
+      const nonce = this.randomString(16)
+      console.log("this.nonce", nonce);
+        if ((<any> window).cordova?.plugins?.TLCPlayIntegrity) {
+          (<any> window).cordova.plugins.TLCPlayIntegrity.certifyKey(nonce, (result: any) => {
+            console.log("Play Integrity Result: ", result)
+          }, (error: any) => {
+            console.log("Play Integrity Error: ", error)
+          })
+        }
+      }
   }
 
   public callNumberTo(number: string) {
@@ -100,5 +111,14 @@ export class HomePage implements OnInit {
       console.log("Opening Market.")
       this.market.open("com.whatsapp").then((res) => console.log("market.open: ", res)).catch(err => console.log("market.open Error: ", err))
     }
+  }
+
+  randomString(length: number) {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (var i = 0; i < length; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
   }
 }

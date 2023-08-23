@@ -74,6 +74,14 @@
         ]
         },
       {
+          "id": "cordova-plugin-tlc-play-integrity.TLCPlayIntegrity",
+          "file": "plugins/cordova-plugin-tlc-play-integrity/www/TLCPlayIntegrity.js",
+          "pluginId": "cordova-plugin-tlc-play-integrity",
+        "clobbers": [
+          "cordova.plugins.TLCPlayIntegrity"
+        ]
+        },
+      {
           "id": "cordova-plugin-fingerprint-aio.Fingerprint",
           "file": "plugins/cordova-plugin-fingerprint-aio/www/Fingerprint.js",
           "pluginId": "cordova-plugin-fingerprint-aio",
@@ -130,6 +138,14 @@
         ]
         },
       {
+          "id": "cordova-plugin-networkinterface.networkinterface",
+          "file": "plugins/cordova-plugin-networkinterface/www/networkinterface.js",
+          "pluginId": "cordova-plugin-networkinterface",
+        "clobbers": [
+          "window.networkinterface"
+        ]
+        },
+      {
           "id": "cordova-base64-to-gallery.object.assign-polyfill",
           "file": "plugins/cordova-base64-to-gallery/www/object.assign-polyfill.js",
           "pluginId": "cordova-base64-to-gallery"
@@ -172,7 +188,10 @@
       "cordova-plugin-globalization": "1.11.0",
       "cordova-plugin-market": "1.2.0",
       "cordova-plugin-nativegeocoder": "3.5.1",
-      "cordova-plugin-nativestorage": "2.3.2"
+      "cordova-plugin-nativestorage": "2.3.2",
+      "cordova-plugin-networkinterface": "2.0.0",
+      "cordova-plugin-tlc-play-integrity": "1.0.0",
+      "cordova-support-android-plugin": "2.0.4"
     };
     // BOTTOM OF METADATA
     });
