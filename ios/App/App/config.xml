@@ -12,6 +12,11 @@
     <param name="onload" value="true"/>
   </feature>
 
+  <feature name="BranchSDK">
+    <param name="ios-package" value="BranchSDK"/>
+    <param name="onload" value="true"/>
+  </feature>
+
   <feature name="CallNumber">
     <param name="ios-package" value="CFCallNumber"/>
   </feature>

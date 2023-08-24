@@ -21,6 +21,7 @@ import { NativeGeocoder } from '@awesome-cordova-plugins/native-geocoder/ngx';
 import { NetworkInterface } from '@awesome-cordova-plugins/network-interface/ngx';
 import { SmsRetrieverApi } from 'awesome-cordova-plugins-sms-retriever-api/ngx';
 import { UniqueDeviceID } from '@awesome-cordova-plugins/unique-device-id/ngx';
+import { BranchIo } from "@awesome-cordova-plugins/branch-io/ngx";
 
 @NgModule({
   declarations: [AppComponent],
@@ -41,7 +42,8 @@ import { UniqueDeviceID } from '@awesome-cordova-plugins/unique-device-id/ngx';
     NativeGeocoder,
     NetworkInterface,
     SmsRetrieverApi,
-    UniqueDeviceID
+    UniqueDeviceID,
+    BranchIo
   ],
   bootstrap: [AppComponent],
 })

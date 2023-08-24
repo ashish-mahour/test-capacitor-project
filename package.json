@@ -25,6 +25,7 @@
     "@awesome-cordova-plugins/android-permissions": "^6.4.0",
     "@awesome-cordova-plugins/app-availability": "^6.4.0",
     "@awesome-cordova-plugins/app-version": "^6.4.0",
+    "@awesome-cordova-plugins/branch-io": "^6.4.0",
     "@awesome-cordova-plugins/calendar": "^6.4.0",
     "@awesome-cordova-plugins/call-number": "^6.4.0",
     "@awesome-cordova-plugins/file-path": "^6.4.0",

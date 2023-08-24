@@ -11,6 +11,11 @@
     <param name="onload" value="true"/>
   </feature>
 
+  <feature name="BranchSDK">
+    <param name="android-package" value="io.branch.BranchSDK"/>
+    <param name="onload" value="true"/>
+  </feature>
+
   <feature name="CallNumber">
     <param name="android-package" value="mx.ferreyra.callnumber.CFCallNumber"/>
   </feature>

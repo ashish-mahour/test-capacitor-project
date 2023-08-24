@@ -21,6 +21,9 @@
   "dependencies": {
     "CapacitorCordova": [
 
+    ],
+    "Branch": [
+      "~> 1.43.1"
     ]
   },
   "swift_versions": "5.1",
