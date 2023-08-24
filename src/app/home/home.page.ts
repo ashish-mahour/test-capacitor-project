@@ -43,24 +43,28 @@ export class HomePage implements OnInit {
     private uniqueDeviceID: UniqueDeviceID
   ) {}
 
-  async ngOnInit() {
-    // this.secureKey = await this.aes256.generateSecureKey(password)
-    // this.secureIV = await this.aes256.generateSecureIV(password)
-    // this.aes256.encrypt(this.secureKey, this.secureIV, "Ashish").then((res) => {
-    //   console.log("encrypt: ", res)
-    //   this.aes256.decrypt(this.secureKey, this.secureIV, res).then((res) => console.log("decrypt: ", res)).catch(err => console.log("decrypt Error: ", err))
-    // }).catch(err => console.log("encrypt Error: ", err))
-    // this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then((res) => console.log("checkPermission: ", res)).catch(err => console.log("checkPermission Error: ", err))
-    // this.appVersion.getVersionNumber().then((res) => console.log("getVersionNumber: ", res)).catch(err => console.log("getVersionNumber Error: ", err))
-    // let scheme = null
-    // if (this.platform.is("android")) {
-    //   scheme = "com.instagram.android"
-    // } else {
-    //   scheme = "instagram://"
-    // }
-    // this.appAvailability.check(scheme).then((res) => console.log("appAvailability: ", res)).catch(err => console.log("appAvailability Error: ", err))
-    // this.calendar.listCalendars().then((res) => console.log("listCalendars: ", res)).catch(err => console.log("listCalendars Error: ", err))
-    // this.filePath.resolveNativePath("content://com.android").then((res) => console.log("resolveNativePath: ", res)).catch(err => console.log("resolveNativePath Error: ", err))
+  ngOnInit() {
+    // this.testCode()
+  }
+
+  async testCode() {
+    this.secureKey = await this.aes256.generateSecureKey(password)
+    this.secureIV = await this.aes256.generateSecureIV(password)
+    this.aes256.encrypt(this.secureKey, this.secureIV, "Ashish").then((res) => {
+      console.log("encrypt: ", res)
+      this.aes256.decrypt(this.secureKey, this.secureIV, res).then((res) => console.log("decrypt: ", res)).catch(err => console.log("decrypt Error: ", err))
+    }).catch(err => console.log("encrypt Error: ", err))
+    this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then((res) => console.log("checkPermission: ", res)).catch(err => console.log("checkPermission Error: ", err))
+    this.appVersion.getVersionNumber().then((res) => console.log("getVersionNumber: ", res)).catch(err => console.log("getVersionNumber Error: ", err))
+    let scheme = null
+    if (this.platform.is("android")) {
+      scheme = "com.instagram.android"
+    } else {
+      scheme = "instagram://"
+    }
+    this.appAvailability.check(scheme).then((res) => console.log("appAvailability: ", res)).catch(err => console.log("appAvailability Error: ", err))
+    this.calendar.listCalendars().then((res) => console.log("listCalendars: ", res)).catch(err => console.log("listCalendars Error: ", err))
+    this.filePath.resolveNativePath("content://com.android").then((res) => console.log("resolveNativePath: ", res)).catch(err => console.log("resolveNativePath Error: ", err))
     this.globalization.getPreferredLanguage().then((res) => console.log("getPreferredLanguage: ", res)).catch(err => console.log("getPreferredLanguage Error: ", err));
     (<any> window).IRoot.isRooted((res: any) => {
       console.log("isRooted: ", res)
@@ -78,16 +82,23 @@ export class HomePage implements OnInit {
     if (this.platform.is("android")) {
       const nonce = this.randomString(16)
       console.log("this.nonce", nonce);
-        // if ((<any> window).cordova?.plugins?.TLCPlayIntegrity) {
-        //   (<any> window).cordova.plugins.TLCPlayIntegrity.certifyKey(nonce, (result: any) => {
-        //     console.log("Play Integrity Result: ", result)
-        //   }, (error: any) => {
-        //     console.log("Play Integrity Error: ", error)
-        //   })
-        // }
+        if ((<any> window).cordova?.plugins?.TLCPlayIntegrity) {
+          (<any> window).cordova.plugins.TLCPlayIntegrity.certifyKey(nonce, (result: any) => {
+            console.log("Play Integrity Result: ", result)
+          }, (error: any) => {
+            console.log("Play Integrity Error: ", error)
+          })
+        }
         this.smsRetrieverApi.getHashString().then((res) => console.log("getHashString: ", res)).catch(err => console.log("getHashString Error: ", err));
       }
       this.uniqueDeviceID.get().then((res) => console.log("uniqueDeviceID: ", res)).catch(err => console.log("uniqueDeviceID Error: ", err));
+      // this.platform.ready().then(() => {
+      //   (<any>window).AEP.trackState("Prestige Club: login/signup:C_PC_Onboarding_AddaCelebratorydate", {}, (data: any) => {
+      //     console.log('success in analytics', data);
+      //   }, (e: any) => {
+      //     console.log('error in analytics', e);
+      //   });
+      // })
   }
 
   public callNumberTo(number: string) {
