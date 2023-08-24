@@ -25,6 +25,10 @@
 #import "IRoot.h"
 #import "CDVMarket.h"
 #import "NativeStorage.h"
+#import "CDVNetworkInterface.h"
+#import "CDVUniqueDeviceID.h"
+#import "UICKeyChainStore.h"
+#import "CFCallNumber.h"
 
 FOUNDATION_EXPORT double CordovaPluginsVersionNumber;
 FOUNDATION_EXPORT const unsigned char CordovaPluginsVersionString[];
