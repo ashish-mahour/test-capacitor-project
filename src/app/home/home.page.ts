@@ -17,8 +17,38 @@ import { UniqueDeviceID } from '@awesome-cordova-plugins/unique-device-id/ngx';
 import { Facebook } from '@awesome-cordova-plugins/facebook/ngx';
 import { FirebaseAnalytics } from "@awesome-cordova-plugins/firebase-analytics/ngx"
 import { FirebaseCrashlytics } from "@awesome-cordova-plugins/firebase-crashlytics/ngx"
+import { Contacts } from "@capacitor-community/contacts"
 
 const password = "123456"
+
+export const CHAT = {
+  liveAgentPod: 'd.la2-c1cs-hnd.salesforceliveagent.com',
+  chatOrgId: '00D1y0000008lSY',
+  deploymentId: '5721y000000001d',
+  buttonId: '5731y0000000022',
+  navbarBackground: "#FAFAFA",
+  navbarInverted: "#010101",
+  brandPrimary: "#2c4390",
+  brandSecondary: "#2c4390",
+  brandPrimaryInverted: "#FBFBFB",
+  brandSecondaryInverted: "#FCFCFC",
+  contrastPrimary: "#000000",
+  contrastSecondary: "#767676",
+  contrastTertiary: "#BABABA",
+  contrastQuaternary: "#F1F1F1",
+  contrastInverted: "#FFFFFF",
+  feedbackPrimary: "#E74C3C",
+  feedbackSecondary: "#2ECC71",
+  feedbackTertiary: "#F5A623",
+  overlay: "#000000",
+  text: 'text',
+  Name: 'First Name',
+  lastName: 'Last Name',
+  Mobile: 'Mobile',
+  Email: 'Email',
+  number: 'number',
+  email: 'email'
+}
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -53,7 +83,6 @@ export class HomePage implements OnInit {
   ngOnInit() {
     // this.testCode()
     this.platform.ready().then(() => {
-     
     })
   }
 
@@ -61,7 +90,13 @@ export class HomePage implements OnInit {
     this.crashlytics.crash()
   }
 
+  pickContants() {
+    Contacts.getContacts({projection: { name: true, phones: true, postalAddresses: true }}).then((res) => console.log("Contacts.getContacts: ", res)).catch(err => console.log("Contacts.getContacts Error: ", err));
+  }
+
   async testCode() {
+    Contacts.requestPermissions().then((res) => console.log("Contacts.requestPermissions: ", res)).catch(err => console.log("Contacts.requestPermissions Error: ", err));
+    this.initializechat()
     this.crashlytics = this.firebaseCrashlytics.initialise()
     this.firebaseAnalytics.logEvent("Home Page", {}).then((res) => console.log("firebaseAnalytics.logEvent: ", res)).catch(err => console.log("firebaseAnalytics.logEvent Error: ", err));
     this.facebook.getApplicationId().then((res) => console.log("getApplicationId: ", res)).catch(err => console.log("getApplicationId Error: ", err));
@@ -160,5 +195,108 @@ export class HomePage implements OnInit {
     (<any>navigator).screenshot.URI((res: any, data: any) => {
       console.log("screenshot: ", res, data)
     }, 100)
+  }
+
+  initializechat() {
+
+    const SalesforceSnapIns = (<any>window).cordova.plugins.SalesforceSnapIns;
+    SalesforceSnapIns.initialize({
+      liveAgentChat: {
+        liveAgentPod: CHAT.liveAgentPod,
+        orgId: CHAT.chatOrgId,
+        deploymentId: CHAT.deploymentId,
+        buttonId: CHAT.buttonId
+      },
+      colors: {
+        navbarBackground: CHAT.navbarBackground,
+        navbarInverted: CHAT.navbarInverted,
+        brandPrimary: CHAT.brandPrimary,
+        brandSecondary: CHAT.brandSecondary,
+        brandPrimaryInverted: CHAT.brandPrimaryInverted,
+        brandSecondaryInverted: CHAT.brandSecondaryInverted,
+        contrastPrimary: CHAT.contrastPrimary,
+        contrastSecondary: CHAT.contrastSecondary,
+        contrastTertiary: CHAT.contrastTertiary,
+        contrastQuaternary: CHAT.contrastQuaternary,
+        contrastInverted: CHAT.contrastInverted,
+        feedbackPrimary: CHAT.feedbackPrimary,
+        feedbackSecondary: CHAT.feedbackSecondary,
+        feedbackTertiary: CHAT.feedbackTertiary,
+        overlay: CHAT.overlay
+      }
+    });
+
+
+  }
+
+  //..Start With Visitor Chat here//
+  startWithVisitorChat() {
+
+    const SalesforceSnapIns = (<any>window).cordova.plugins.SalesforceSnapIns;
+    SalesforceSnapIns.clearPrechatFields();
+    SalesforceSnapIns.addPrechatField({
+      type: CHAT.text,
+      label: CHAT.Name,
+      required: true
+    });
+
+    SalesforceSnapIns.addPrechatField({
+      type: CHAT.text,
+      label: CHAT.lastName,
+      required: true
+    });
+
+    SalesforceSnapIns.addPrechatField({
+      type: CHAT.text,
+      label: CHAT.Mobile,
+      required: true,
+      keyboardType: SalesforceSnapIns.KEYBOARD_TYPE_NUMBER_PAD,
+      autocorrectionType: SalesforceSnapIns.AUTOCORRECTION_TYPE_NO
+    });
+
+    SalesforceSnapIns.addPrechatField({
+      type: CHAT.text,
+      label: CHAT.Email,
+      required: true,
+      keyboardType: SalesforceSnapIns.KEYBOARD_TYPE_EMAIL_ADDRESS,
+      autocorrectionType: SalesforceSnapIns.AUTOCORRECTION_TYPE_NO
+    });
+
+    // SalesforceSnapIns.addPrechatField({
+    //   type: 'hidden',
+    //   label: 'Progran id', // demo label name given 
+    //   value: environment.headers.program_id,
+    //   required: false
+    // });
+
+    let object = this;
+    SalesforceSnapIns.determineAvailability((available: any) => {
+      console.log("available", available);
+      if (available) {
+        SalesforceSnapIns.openLiveAgentChat((check: any) => {
+          console.log("check2", check);
+          if (check == 'email') {
+            //console.log("check", check);
+            setTimeout(() => {
+              console.log("please enter valid email.");
+            }, 500)
+
+          } else if (check == 'mobile') {
+            setTimeout(() => {
+              console.log("please enter valid mobile number.");
+            }, 500)
+          } else if (check == 'mobileemail') {
+            setTimeout(() => {
+              console.log("please enter valid mobile number and email.");
+            }, 500)
+          }
+        }, function () {
+        });
+      } else {
+        console.log("Agent is unavailable")
+      }
+    }, (err: any) => {
+      console.log("determineAvailability Error: ", err)
+    });
   }
 }

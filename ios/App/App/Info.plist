@@ -158,5 +158,7 @@
 	</array>
 	</dict>
 	</array>
+	<key>NSContactsUsageDescription</key>
+	<string>Contacts?</string>
 </dict>
 </plist>

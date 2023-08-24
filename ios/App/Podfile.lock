@@ -3,6 +3,8 @@ PODS:
     - CapacitorCordova
   - CapacitorApp (5.0.6):
     - Capacitor
+  - CapacitorCommunityContacts (5.0.4):
+    - Capacitor
   - CapacitorCordova (5.2.3)
   - CapacitorDialog (5.0.6):
     - Capacitor
@@ -23,6 +25,7 @@ PODS:
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorApp (from `../../node_modules/@capacitor/app`)"
+  - "CapacitorCommunityContacts (from `../../node_modules/@capacitor-community/contacts`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorDialog (from `../../node_modules/@capacitor/dialog`)"
   - "CapacitorGeolocation (from `../../node_modules/@capacitor/geolocation`)"
@@ -36,6 +39,8 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/ios"
   CapacitorApp:
     :path: "../../node_modules/@capacitor/app"
+  CapacitorCommunityContacts:
+    :path: "../../node_modules/@capacitor-community/contacts"
   CapacitorCordova:
     :path: "../../node_modules/@capacitor/ios"
   CapacitorDialog:
@@ -54,6 +59,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Capacitor: 6f44cbc33839b8a4202b8eac97041fe584083417
   CapacitorApp: 024e1b1bea5f883d79f6330d309bc441c88ad04a
+  CapacitorCommunityContacts: 45de2477f7dc6265d267677939a2c75465d2ed87
   CapacitorCordova: 35def3ebfdef491f0a7b652816eb873ff4b20bbf
   CapacitorDialog: 0f3c15dfe9414b83bc64aef4078f1b92bcfead26
   CapacitorGeolocation: 7be5f77abc205c0efe319fff8587a7183e7b0240
@@ -62,6 +68,6 @@ SPEC CHECKSUMS:
   CapacitorStatusBar: 565c0a1ebd79bb40d797606a8992b4a105885309
   CordovaPlugins: a080d251c2a7854b195162ffaf07375269037f66
 
-PODFILE CHECKSUM: 6a189b36a3d61aaec69c34a9f2a9c5630b31d224
+PODFILE CHECKSUM: 15e9ef016fc49b6c9311f320d7afd66b725938ff
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1
