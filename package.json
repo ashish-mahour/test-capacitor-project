@@ -86,7 +86,6 @@
     "cordova-plugin-appavailability": "^0.4.2",
     "cordova-plugin-badge": "github:katzer/cordova-plugin-badge",
     "cordova-plugin-calendar": "^5.1.6",
-    "cordova-plugin-facebook-connect": "^3.2.0",
     "cordova-plugin-filepath": "^1.6.0",
     "cordova-plugin-fingerprint-aio": "^5.0.1",
     "cordova-plugin-globalization": "^1.11.0",
