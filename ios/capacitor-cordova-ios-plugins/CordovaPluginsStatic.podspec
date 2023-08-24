@@ -13,7 +13,4 @@
     s.dependency 'CapacitorCordova'
     s.swift_version  = '5.1'
     s.static_framework = true
-    s.dependency 'FBSDKCoreKit', '11.1.0'
-    s.dependency 'FBSDKLoginKit', '11.1.0'
-    s.dependency 'FBSDKShareKit', '11.1.0'
   end

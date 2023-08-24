@@ -19,33 +19,6 @@ PODS:
     - CordovaPlugins/noarc (= 5.2.3)
   - CordovaPlugins/noarc (5.2.3):
     - CapacitorCordova
-  - CordovaPluginsStatic (5.2.3):
-    - CapacitorCordova
-    - FBSDKCoreKit (= 11.1.0)
-    - FBSDKLoginKit (= 11.1.0)
-    - FBSDKShareKit (= 11.1.0)
-  - FBAEMKit (11.1.0):
-    - FBAEMKit/AEM (= 11.1.0)
-  - FBAEMKit/AEM (11.1.0):
-    - FBSDKCoreKit_Basics (~> 11.1.0)
-  - FBSDKCoreKit (11.1.0):
-    - FBSDKCoreKit/Core (= 11.1.0)
-  - FBSDKCoreKit/Core (11.1.0):
-    - FBAEMKit (~> 11.1.0)
-    - FBSDKCoreKit_Basics (~> 11.1.0)
-  - FBSDKCoreKit_Basics (11.1.0):
-    - FBSDKCoreKit_Basics/Basics (= 11.1.0)
-  - FBSDKCoreKit_Basics/Basics (11.1.0)
-  - FBSDKLoginKit (11.1.0):
-    - FBSDKLoginKit/Login (= 11.1.0)
-  - FBSDKLoginKit/Login (11.1.0):
-    - FBSDKCoreKit (~> 11.1.0)
-    - FBSDKCoreKit_Basics (~> 11.1.0)
-  - FBSDKShareKit (11.1.0):
-    - FBSDKShareKit/Share (= 11.1.0)
-  - FBSDKShareKit/Share (11.1.0):
-    - FBSDKCoreKit (~> 11.1.0)
-    - FBSDKCoreKit_Basics (~> 11.1.0)
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
@@ -57,15 +30,6 @@ DEPENDENCIES:
   - "CapacitorKeyboard (from `../../node_modules/@capacitor/keyboard`)"
   - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
   - CordovaPlugins (from `../capacitor-cordova-ios-plugins`)
-  - CordovaPluginsStatic (from `../capacitor-cordova-ios-plugins`)
-
-SPEC REPOS:
-  trunk:
-    - FBAEMKit
-    - FBSDKCoreKit
-    - FBSDKCoreKit_Basics
-    - FBSDKLoginKit
-    - FBSDKShareKit
 
 EXTERNAL SOURCES:
   Capacitor:
@@ -86,8 +50,6 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/status-bar"
   CordovaPlugins:
     :path: "../capacitor-cordova-ios-plugins"
-  CordovaPluginsStatic:
-    :path: "../capacitor-cordova-ios-plugins"
 
 SPEC CHECKSUMS:
   Capacitor: 6f44cbc33839b8a4202b8eac97041fe584083417
@@ -99,13 +61,7 @@ SPEC CHECKSUMS:
   CapacitorKeyboard: b978154b024a5f65e044908e37d15b7de58b9d12
   CapacitorStatusBar: 565c0a1ebd79bb40d797606a8992b4a105885309
   CordovaPlugins: a080d251c2a7854b195162ffaf07375269037f66
-  CordovaPluginsStatic: 0161ccd30edf669ca795136f3844f6a21b643778
-  FBAEMKit: 5c8a8d08e5b2c79628490784883e0fcc75b12615
-  FBSDKCoreKit: 7ccb8b4bb2b5ee2ad94327b774dc23f03509675d
-  FBSDKCoreKit_Basics: 8f978bce195845f609b0ec6b425949d0d24f525b
-  FBSDKLoginKit: d65eb587a9eaa89295338fb0bb3b358bde0b7ae4
-  FBSDKShareKit: b2142706d3f2410fb0ea76ad5a63238c71307117
 
-PODFILE CHECKSUM: bce02d86108e3cc9bd7a9defba1505b600120b26
+PODFILE CHECKSUM: 6a189b36a3d61aaec69c34a9f2a9c5630b31d224
 
 COCOAPODS: 1.11.3
