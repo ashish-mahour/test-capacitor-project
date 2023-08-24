@@ -67,6 +67,4 @@ testem.log
 .DS_Store
 Thumbs.db
 
-/android/app/src/main/assets/public
-/android/.gradle
 /ios/App/App/public

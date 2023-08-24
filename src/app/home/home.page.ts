@@ -15,6 +15,8 @@ import { Geolocation } from "@capacitor/geolocation";
 import { SmsRetrieverApi } from 'awesome-cordova-plugins-sms-retriever-api/ngx';
 import { UniqueDeviceID } from '@awesome-cordova-plugins/unique-device-id/ngx';
 import { Facebook } from '@awesome-cordova-plugins/facebook/ngx';
+import { FirebaseAnalytics } from "@awesome-cordova-plugins/firebase-analytics/ngx"
+import { FirebaseCrashlytics } from "@awesome-cordova-plugins/firebase-crashlytics/ngx"
 
 const password = "123456"
 @Component({
@@ -26,6 +28,7 @@ export class HomePage implements OnInit {
 
   private secureKey: string = ""
   private secureIV: string = ""
+  private crashlytics: any = null
 
   constructor(
     private platform: Platform,
@@ -42,17 +45,25 @@ export class HomePage implements OnInit {
     private nativeGeocoder: NativeGeocoder,
     private smsRetrieverApi: SmsRetrieverApi,
     private uniqueDeviceID: UniqueDeviceID,
-    private facebook: Facebook
+    private facebook: Facebook,
+    private firebaseAnalytics: FirebaseAnalytics,
+    private firebaseCrashlytics: FirebaseCrashlytics
   ) {}
 
   ngOnInit() {
     // this.testCode()
     this.platform.ready().then(() => {
-      
+     
     })
   }
 
+  testCrash() {
+    this.crashlytics.crash()
+  }
+
   async testCode() {
+    this.crashlytics = this.firebaseCrashlytics.initialise()
+    this.firebaseAnalytics.logEvent("Home Page", {}).then((res) => console.log("firebaseAnalytics.logEvent: ", res)).catch(err => console.log("firebaseAnalytics.logEvent Error: ", err));
     this.facebook.getApplicationId().then((res) => console.log("getApplicationId: ", res)).catch(err => console.log("getApplicationId Error: ", err));
     this.secureKey = await this.aes256.generateSecureKey(password)
     this.secureIV = await this.aes256.generateSecureIV(password)

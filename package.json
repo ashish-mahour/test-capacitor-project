@@ -32,6 +32,8 @@
     "@awesome-cordova-plugins/file-path": "^6.4.0",
     "@awesome-cordova-plugins/file-transfer": "^6.4.0",
     "@awesome-cordova-plugins/fingerprint-aio": "^6.4.0",
+    "@awesome-cordova-plugins/firebase-analytics": "^6.4.0",
+    "@awesome-cordova-plugins/firebase-crashlytics": "^6.4.0",
     "@awesome-cordova-plugins/globalization": "^6.4.0",
     "@awesome-cordova-plugins/market": "^6.4.0",
     "@awesome-cordova-plugins/media-capture": "^6.4.0",

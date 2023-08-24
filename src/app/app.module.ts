@@ -23,6 +23,8 @@ import { SmsRetrieverApi } from 'awesome-cordova-plugins-sms-retriever-api/ngx';
 import { UniqueDeviceID } from '@awesome-cordova-plugins/unique-device-id/ngx';
 import { BranchIo } from "@awesome-cordova-plugins/branch-io/ngx";
 import { Facebook } from '@awesome-cordova-plugins/facebook/ngx';
+import { FirebaseAnalytics } from "@awesome-cordova-plugins/firebase-analytics/ngx"
+import { FirebaseCrashlytics } from "@awesome-cordova-plugins/firebase-crashlytics/ngx"
 
 @NgModule({
   declarations: [AppComponent],
@@ -45,7 +47,9 @@ import { Facebook } from '@awesome-cordova-plugins/facebook/ngx';
     SmsRetrieverApi,
     UniqueDeviceID,
     BranchIo,
-    Facebook
+    Facebook,
+    FirebaseAnalytics,
+    FirebaseCrashlytics
   ],
   bootstrap: [AppComponent],
 })

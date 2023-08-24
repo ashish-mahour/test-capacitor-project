@@ -4,5 +4,4 @@
     <string name="title_activity_main">TestCapacitorApp</string>
     <string name="package_name">com.test.capacitor.demo</string>
     <string name="custom_url_scheme">com.test.capacitor.demo</string>
-    <string name="google_cloud_project_number">508308276264</string>
 </resources>
