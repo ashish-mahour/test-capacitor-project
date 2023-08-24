@@ -46,7 +46,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
     implementation "org.apache.cordova:framework:$cordovaAndroidVersion"
     // SUB-PROJECT DEPENDENCIES START
-    implementation "io.branch.sdk.android:library:5.2.0"
+    implementation "com.facebook.android:facebook-android-sdk:11.3.0"
     implementation "com.google.android.gms:play-services-auth:20.5.0"
     implementation "com.google.android.gms:play-services-auth-api-phone:18.0.1"
     // SUB-PROJECT DEPENDENCIES END

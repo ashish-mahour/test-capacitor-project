@@ -12,14 +12,6 @@
     s.xcconfig = {'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) COCOAPODS=1 WK_WEB_VIEW_ONLY=1' }
     s.dependency 'CapacitorCordova'
     s.swift_version  = '5.1'
-    s.dependency 'Branch', '~> 1.43.1'
-    s.dependency 'ACPUserProfile', '~> 2.1'
-    s.dependency 'ACPCore', '~> 2.6'
-    s.dependency 'ACPAnalytics', '~> 2.2'
-    s.dependency 'ACPCampaign', '~> 1.0'
-    s.dependency 'ACPTarget', '~> 2.1'
-    s.dependency 'ACPPlaces', '~> 1.3'
-    s.dependency 'ACPPlacesMonitor', '~> 2.1'
     s.frameworks = 'Security', 'EventKit', 'EventKitUI', 'CoreLocation'
     s.compiler_flags = '-fno-objc-arc'
     s.subspec 'noarc' do |sna|

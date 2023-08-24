@@ -14,6 +14,7 @@ import { NativeGeocoder, NativeGeocoderOptions } from '@awesome-cordova-plugins/
 import { Geolocation } from "@capacitor/geolocation";
 import { SmsRetrieverApi } from 'awesome-cordova-plugins-sms-retriever-api/ngx';
 import { UniqueDeviceID } from '@awesome-cordova-plugins/unique-device-id/ngx';
+import { Facebook } from '@awesome-cordova-plugins/facebook/ngx';
 
 const password = "123456"
 @Component({
@@ -40,14 +41,19 @@ export class HomePage implements OnInit {
     private market: Market,
     private nativeGeocoder: NativeGeocoder,
     private smsRetrieverApi: SmsRetrieverApi,
-    private uniqueDeviceID: UniqueDeviceID
+    private uniqueDeviceID: UniqueDeviceID,
+    private facebook: Facebook
   ) {}
 
   ngOnInit() {
     // this.testCode()
+    this.platform.ready().then(() => {
+      
+    })
   }
 
   async testCode() {
+    this.facebook.getApplicationId().then((res) => console.log("getApplicationId: ", res)).catch(err => console.log("getApplicationId Error: ", err));
     this.secureKey = await this.aes256.generateSecureKey(password)
     this.secureIV = await this.aes256.generateSecureIV(password)
     this.aes256.encrypt(this.secureKey, this.secureIV, "Ashish").then((res) => {

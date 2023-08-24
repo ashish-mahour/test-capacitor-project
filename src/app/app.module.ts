@@ -22,6 +22,7 @@ import { NetworkInterface } from '@awesome-cordova-plugins/network-interface/ngx
 import { SmsRetrieverApi } from 'awesome-cordova-plugins-sms-retriever-api/ngx';
 import { UniqueDeviceID } from '@awesome-cordova-plugins/unique-device-id/ngx';
 import { BranchIo } from "@awesome-cordova-plugins/branch-io/ngx";
+import { Facebook } from '@awesome-cordova-plugins/facebook/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -43,7 +44,8 @@ import { BranchIo } from "@awesome-cordova-plugins/branch-io/ngx";
     NetworkInterface,
     SmsRetrieverApi,
     UniqueDeviceID,
-    BranchIo
+    BranchIo,
+    Facebook
   ],
   bootstrap: [AppComponent],
 })

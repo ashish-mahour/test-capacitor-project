@@ -12,11 +12,6 @@
     <param name="onload" value="true"/>
   </feature>
 
-  <feature name="BranchSDK">
-    <param name="ios-package" value="BranchSDK"/>
-    <param name="onload" value="true"/>
-  </feature>
-
   <feature name="CallNumber">
     <param name="ios-package" value="CFCallNumber"/>
   </feature>
@@ -24,14 +19,6 @@
   <feature name="Base64ToGallery">
     <param name="ios-package" value="Base64ToGallery"/>
     <param name="onload" value="true"/>
-  </feature>
-
-  <feature name="AEPMobile_PhoneGap">
-    <param name="ios-package" value="AEPMobile_PhoneGap" onload="true"/>
-  </feature>
-
-  <feature name="AEPMobile_PhoneGap">
-    <param name="ios-package" value="AEPMobile_PhoneGap"/>
   </feature>
 
   <feature name="AES256">
@@ -56,6 +43,11 @@
 
   <feature name="Calendar">
     <param name="ios-package" value="Calendar"/>
+  </feature>
+
+  <feature name="FacebookConnectPlugin">
+    <param name="ios-package" value="FacebookConnectPlugin"/>
+    <param name="onload" value="true"/>
   </feature>
 
   <feature name="Fingerprint">

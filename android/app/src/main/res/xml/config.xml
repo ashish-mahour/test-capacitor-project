@@ -11,11 +11,6 @@
     <param name="onload" value="true"/>
   </feature>
 
-  <feature name="BranchSDK">
-    <param name="android-package" value="io.branch.BranchSDK"/>
-    <param name="onload" value="true"/>
-  </feature>
-
   <feature name="CallNumber">
     <param name="android-package" value="mx.ferreyra.callnumber.CFCallNumber"/>
   </feature>
@@ -46,6 +41,11 @@
 
   <feature name="Calendar">
     <param name="android-package" value="nl.xservices.plugins.Calendar"/>
+  </feature>
+
+  <feature name="FacebookConnectPlugin">
+    <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin"/>
+    <param name="onload" value="true"/>
   </feature>
 
   <feature name="FilePath">

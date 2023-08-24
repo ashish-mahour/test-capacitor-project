@@ -21,30 +21,6 @@
   "dependencies": {
     "CapacitorCordova": [
 
-    ],
-    "Branch": [
-      "~> 1.43.1"
-    ],
-    "ACPUserProfile": [
-      "~> 2.1"
-    ],
-    "ACPCore": [
-      "~> 2.6"
-    ],
-    "ACPAnalytics": [
-      "~> 2.2"
-    ],
-    "ACPCampaign": [
-      "~> 1.0"
-    ],
-    "ACPTarget": [
-      "~> 2.1"
-    ],
-    "ACPPlaces": [
-      "~> 1.3"
-    ],
-    "ACPPlacesMonitor": [
-      "~> 2.1"
     ]
   },
   "swift_versions": "5.1",
