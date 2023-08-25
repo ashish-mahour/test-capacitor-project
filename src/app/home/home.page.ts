@@ -23,10 +23,10 @@ import { MediaCapture } from '@awesome-cordova-plugins/media-capture/ngx';
 const password = "123456"
 
 export const CHAT = {
-  liveAgentPod: 'd.la2-c1cs-hnd.salesforceliveagent.com',
-  chatOrgId: '00D1y0000008lSY',
-  deploymentId: '5721y000000001d',
-  buttonId: '5731y0000000022',
+  liveAgentPod: null,
+  chatOrgId: null,
+  deploymentId: null,
+  buttonId: null,
   navbarBackground: "#FAFAFA",
   navbarInverted: "#010101",
   brandPrimary: "#2c4390",
@@ -86,6 +86,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     // this.testCode()
     this.platform.ready().then(() => {
+      this.initializechat()
     })
   }
 
