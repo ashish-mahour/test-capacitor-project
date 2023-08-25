@@ -20,6 +20,7 @@ import { FirebaseCrashlytics } from "@awesome-cordova-plugins/firebase-crashlyti
 import { Contacts } from "@capacitor-community/contacts"
 import { MediaCapture } from '@awesome-cordova-plugins/media-capture/ngx';
 import { Storage } from '@ionic/storage-angular';
+import { PushNotifications } from "@capacitor/push-notifications"
 
 const password = "123456"
 const shortcutActions =  [
@@ -107,8 +108,44 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     // this.testCode()
-    this.platform.ready().then(() => {
-      this.addAndroidShortcuts()
+    this.platform.ready().then(async () => {
+      let permStatus = await PushNotifications.checkPermissions();
+
+      if (permStatus.receive === 'prompt') {
+        permStatus = await PushNotifications.requestPermissions();
+      }
+
+      if (permStatus.receive !== 'granted') {
+        throw new Error('User denied permissions!');
+      }
+
+      await PushNotifications.register();
+      PushNotifications.register().then(() => {
+        console.log("PushNotifications registered")
+        PushNotifications.addListener("registration", token => {
+          console.info('Registration token: ', token.value);
+          (<any> window).AEP.setPushIdentifier(token.value,
+            function (value: any) {
+                console.log("sucuss Push", value);
+            }, function (err: any) {
+                console.log("fail Push", err);
+            }
+        );
+        });
+      
+        PushNotifications.addListener('registrationError', err => {
+          console.error('Registration error: ', err.error);
+        });
+      
+        PushNotifications.addListener('pushNotificationReceived', notification => {
+          console.log('Push notification received: ', notification);
+        });
+      
+        PushNotifications.addListener('pushNotificationActionPerformed', notification => {
+          console.log('Push notification action performed', notification.actionId, notification.inputValue);
+        });
+      }).catch(err => console.log("PushNotifications.register Error: ", err));
+      
     })
   }
 
@@ -165,6 +202,7 @@ export class HomePage implements OnInit {
   }
 
   private async testCode() {
+    this.addAndroidShortcuts()
     this.storage.create().then((s) => {
       s.set("temp", "value")
     }).catch(err => console.log("storage.create Error: ", err));

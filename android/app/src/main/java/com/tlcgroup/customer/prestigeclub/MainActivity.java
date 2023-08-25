@@ -1,4 +1,4 @@
-package com.test.capacitor.demo;
+package com.tlcgroup.customer.prestigeclub;
 
 import com.getcapacitor.BridgeActivity;
 

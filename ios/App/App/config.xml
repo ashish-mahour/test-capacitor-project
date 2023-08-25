@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  
   <access origin="*" />
   
   <feature name="ThreeDeeTouch">
@@ -23,6 +24,14 @@
   <feature name="Base64ToGallery">
     <param name="ios-package" value="Base64ToGallery"/>
     <param name="onload" value="true"/>
+  </feature>
+
+  <feature name="AEPMobile_PhoneGap">
+    <param name="ios-package" value="AEPMobile_PhoneGap" onload="true"/>
+  </feature>
+
+  <feature name="AEPMobile_PhoneGap">
+    <param name="ios-package" value="AEPMobile_PhoneGap"/>
   </feature>
 
   <feature name="AES256">
@@ -100,4 +109,6 @@
   </feature>
 
   
+  <preference name="environmentIDValue" value="0b11157d649c/e12007c915ba/launch-a00885a9c4aa-staging" />
+  <preference name="platform" value="web" />
 </widget>
