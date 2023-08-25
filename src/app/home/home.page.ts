@@ -18,6 +18,7 @@ import { Facebook } from '@awesome-cordova-plugins/facebook/ngx';
 import { FirebaseAnalytics } from "@awesome-cordova-plugins/firebase-analytics/ngx"
 import { FirebaseCrashlytics } from "@awesome-cordova-plugins/firebase-crashlytics/ngx"
 import { Contacts } from "@capacitor-community/contacts"
+import { MediaCapture } from '@awesome-cordova-plugins/media-capture/ngx';
 
 const password = "123456"
 
@@ -59,6 +60,7 @@ export class HomePage implements OnInit {
   private secureKey: string = ""
   private secureIV: string = ""
   private crashlytics: any = null
+  public screenshotURI: string | null = null
 
   constructor(
     private platform: Platform,
@@ -77,7 +79,8 @@ export class HomePage implements OnInit {
     private uniqueDeviceID: UniqueDeviceID,
     private facebook: Facebook,
     private firebaseAnalytics: FirebaseAnalytics,
-    private firebaseCrashlytics: FirebaseCrashlytics
+    private firebaseCrashlytics: FirebaseCrashlytics,
+    private mediaCapture: MediaCapture
   ) {}
 
   ngOnInit() {
@@ -92,6 +95,12 @@ export class HomePage implements OnInit {
 
   pickContants() {
     Contacts.getContacts({projection: { name: true, phones: true, postalAddresses: true }}).then((res) => console.log("Contacts.getContacts: ", res)).catch(err => console.log("Contacts.getContacts Error: ", err));
+  }
+
+  captureVideo() {
+    this.mediaCapture.captureVideo({
+      duration: 2
+    }).then((res) => console.log("Contacts.requestPermissions: ", res)).catch(err => console.log("Contacts.requestPermissions Error: ", err));
   }
 
   async testCode() {
@@ -192,9 +201,17 @@ export class HomePage implements OnInit {
   }
 
   takeScreenshot() {
-    (<any>navigator).screenshot.URI((res: any, data: any) => {
-      console.log("screenshot: ", res, data)
-    }, 100)
+    (<any>navigator).screenshot.URI((error: any, res: any) =>{
+      if (error) {
+        console.error("screenshot.save Error: ", error);
+      } else {
+        console.log('screenshot.save', res);
+        this.screenshotURI = res?.URI
+        setTimeout(() => {
+          this.screenshotURI = null
+        }, 2000)
+      }
+    });
   }
 
   initializechat() {

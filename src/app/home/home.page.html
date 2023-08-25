@@ -62,6 +62,14 @@
           Pick Contants
          </ion-button>
       </ion-col>
+      <ion-col>
+        <ion-button (click)="captureVideo()">
+          Capture Video
+         </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="screenshotURI">
+      <img style="width: 100%;" [src]="screenshotURI">
     </ion-row>
   </ion-grid>
 </ion-content>

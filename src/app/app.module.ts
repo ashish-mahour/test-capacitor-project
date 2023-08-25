@@ -25,6 +25,7 @@ import { BranchIo } from "@awesome-cordova-plugins/branch-io/ngx";
 import { Facebook } from '@awesome-cordova-plugins/facebook/ngx';
 import { FirebaseAnalytics } from "@awesome-cordova-plugins/firebase-analytics/ngx"
 import { FirebaseCrashlytics } from "@awesome-cordova-plugins/firebase-crashlytics/ngx"
+import { MediaCapture } from '@awesome-cordova-plugins/media-capture/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -49,7 +50,8 @@ import { FirebaseCrashlytics } from "@awesome-cordova-plugins/firebase-crashlyti
     BranchIo,
     Facebook,
     FirebaseAnalytics,
-    FirebaseCrashlytics
+    FirebaseCrashlytics,
+    MediaCapture
   ],
   bootstrap: [AppComponent],
 })

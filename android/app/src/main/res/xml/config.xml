@@ -15,6 +15,10 @@
     <param name="android-package" value="mx.ferreyra.callnumber.CFCallNumber"/>
   </feature>
 
+  <feature name="Screenshot">
+    <param name="android-package" value="com.darktalker.cordova.screenshot.Screenshot"/>
+  </feature>
+
   <feature name="Base64ToGallery">
     <param name="android-package" value="it.nexxa.base64ToGallery.Base64ToGallery"/>
   </feature>
@@ -43,6 +47,11 @@
     <param name="android-package" value="nl.xservices.plugins.Calendar"/>
   </feature>
 
+  <feature name="File">
+    <param name="android-package" value="org.apache.cordova.file.FileUtils"/>
+    <param name="onload" value="true"/>
+  </feature>
+
   <feature name="FilePath">
     <param name="android-package" value="com.hiddentao.cordova.filepath.FilePath"/>
     <param name="onload" value="true"/>
@@ -58,6 +67,10 @@
 
   <feature name="Market">
     <param name="android-package" value="com.xmartlabs.cordova.market.Market"/>
+  </feature>
+
+  <feature name="Capture">
+    <param name="android-package" value="org.apache.cordova.mediacapture.Capture"/>
   </feature>
 
   <feature name="NativeGeocoder">
