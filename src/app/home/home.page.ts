@@ -19,9 +19,30 @@ import { FirebaseAnalytics } from "@awesome-cordova-plugins/firebase-analytics/n
 import { FirebaseCrashlytics } from "@awesome-cordova-plugins/firebase-crashlytics/ngx"
 import { Contacts } from "@capacitor-community/contacts"
 import { MediaCapture } from '@awesome-cordova-plugins/media-capture/ngx';
+import { Storage } from '@ionic/storage-angular';
 
 const password = "123456"
-
+const shortcutActions =  [
+  {
+    type: "buy-a-membership",
+    title: "Buy a Membership",
+    iconTemplate: "buy_membership"
+  },{
+    type: 'gift-certificate',
+    title: 'Gift an Experience',
+    iconTemplate: 'gift_certificate'
+  },
+  {
+    type: 'redeem-a-benefit',
+    title: 'Redeem a Benefit',
+    iconTemplate: "redeem_a_benefit"
+  },
+  {
+    type: 'book-social-event',
+    title: 'Celebrate with us',
+    iconTemplate: 'book_event'
+  }
+]
 export const CHAT = {
   liveAgentPod: null,
   chatOrgId: null,
@@ -80,14 +101,53 @@ export class HomePage implements OnInit {
     private facebook: Facebook,
     private firebaseAnalytics: FirebaseAnalytics,
     private firebaseCrashlytics: FirebaseCrashlytics,
-    private mediaCapture: MediaCapture
+    private mediaCapture: MediaCapture,
+    private storage: Storage
   ) {}
 
   ngOnInit() {
     // this.testCode()
     this.platform.ready().then(() => {
-      this.initializechat()
+      this.addAndroidShortcuts()
     })
+  }
+
+  private addAndroidShortcuts() {
+    const Shortcuts = (<any> window)?.plugins?.Shortcuts
+    if (!Shortcuts) return;
+    let actions: any[] = [];
+    shortcutActions.forEach(action => {
+      let shortcut = {
+        id: action.type,
+        shortLabel: action.title,
+        iconFromResource: action.iconTemplate,
+        intent: {
+          action: action.type,
+          categories: [
+            action.type,
+            'launch'
+          ],
+          data: {
+            type: action.type,
+            title: action.title
+          },
+        }
+      };  
+      actions.push(shortcut);
+    });
+    Shortcuts.setDynamic(actions, () => {
+      console.log('Shortcuts were applied successfully');
+    }, (error: any) => {
+      console.log('Error: ' + error);
+    });
+    Shortcuts.getIntent((intent: any) => {
+      if (intent && intent.data && typeof(intent.data) == 'object') {
+        console.log("Intent::>", JSON.parse(intent.data));
+        if (('type' in intent.data)) {
+          localStorage.setItem("payload", JSON.stringify(intent.data));
+        }
+      }
+    });
   }
 
   testCrash() {
@@ -104,7 +164,10 @@ export class HomePage implements OnInit {
     }).then((res) => console.log("Contacts.requestPermissions: ", res)).catch(err => console.log("Contacts.requestPermissions Error: ", err));
   }
 
-  async testCode() {
+  private async testCode() {
+    this.storage.create().then((s) => {
+      s.set("temp", "value")
+    }).catch(err => console.log("storage.create Error: ", err));
     Contacts.requestPermissions().then((res) => console.log("Contacts.requestPermissions: ", res)).catch(err => console.log("Contacts.requestPermissions Error: ", err));
     this.initializechat()
     this.crashlytics = this.firebaseCrashlytics.initialise()

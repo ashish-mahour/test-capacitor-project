@@ -26,10 +26,20 @@ import { Facebook } from '@awesome-cordova-plugins/facebook/ngx';
 import { FirebaseAnalytics } from "@awesome-cordova-plugins/firebase-analytics/ngx"
 import { FirebaseCrashlytics } from "@awesome-cordova-plugins/firebase-crashlytics/ngx"
 import { MediaCapture } from '@awesome-cordova-plugins/media-capture/ngx';
+import { IonicStorageModule } from '@ionic/storage-angular';
+import { Drivers } from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule,
+    IonicStorageModule.forRoot({
+      name: "TEST_DB",
+      driverOrder : [Drivers.IndexedDB, Drivers.LocalStorage],
+    })
+  ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, 
     CallNumber, 

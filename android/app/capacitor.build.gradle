@@ -17,8 +17,10 @@ dependencies {
     implementation project(':capacitor-keyboard')
     implementation project(':capacitor-status-bar')
     implementation "androidx.webkit:webkit:1.4.0"
+    implementation "com.android.support:support-compat:27.0.0"
     implementation "com.google.android.gms:play-services-auth:20.5.0"
     implementation "com.google.android.gms:play-services-auth-api-phone:18.0.1"
+    implementation "androidx.sqlite:sqlite:2.1.0"
 }
 apply from: "../../node_modules/cordova-plugin-iroot/src/android/build-extras.gradle"
 apply from: "../../node_modules/cordova-plugin-aes256-encryption/src/android/plugin.gradle"
