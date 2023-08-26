@@ -14,8 +14,64 @@ import { NativeGeocoder, NativeGeocoderOptions } from '@awesome-cordova-plugins/
 import { Geolocation } from "@capacitor/geolocation";
 import { SmsRetrieverApi } from 'awesome-cordova-plugins-sms-retriever-api/ngx';
 import { UniqueDeviceID } from '@awesome-cordova-plugins/unique-device-id/ngx';
+import { Facebook } from '@awesome-cordova-plugins/facebook/ngx';
+import { FirebaseAnalytics } from "@awesome-cordova-plugins/firebase-analytics/ngx"
+import { FirebaseCrashlytics } from "@awesome-cordova-plugins/firebase-crashlytics/ngx"
+import { Contacts } from "@capacitor-community/contacts"
+import { MediaCapture } from '@awesome-cordova-plugins/media-capture/ngx';
+import { Storage } from '@ionic/storage-angular';
+import { PushNotifications } from "@capacitor/push-notifications"
 
 const password = "123456"
+const shortcutActions =  [
+  {
+    type: "buy-a-membership",
+    title: "Buy a Membership",
+    iconTemplate: "buy_membership"
+  },{
+    type: 'gift-certificate',
+    title: 'Gift an Experience',
+    iconTemplate: 'gift_certificate'
+  },
+  {
+    type: 'redeem-a-benefit',
+    title: 'Redeem a Benefit',
+    iconTemplate: "redeem_a_benefit"
+  },
+  {
+    type: 'book-social-event',
+    title: 'Celebrate with us',
+    iconTemplate: 'book_event'
+  }
+]
+export const CHAT = {
+  liveAgentPod: null,
+  chatOrgId: null,
+  deploymentId: null,
+  buttonId: null,
+  navbarBackground: "#FAFAFA",
+  navbarInverted: "#010101",
+  brandPrimary: "#2c4390",
+  brandSecondary: "#2c4390",
+  brandPrimaryInverted: "#FBFBFB",
+  brandSecondaryInverted: "#FCFCFC",
+  contrastPrimary: "#000000",
+  contrastSecondary: "#767676",
+  contrastTertiary: "#BABABA",
+  contrastQuaternary: "#F1F1F1",
+  contrastInverted: "#FFFFFF",
+  feedbackPrimary: "#E74C3C",
+  feedbackSecondary: "#2ECC71",
+  feedbackTertiary: "#F5A623",
+  overlay: "#000000",
+  text: 'text',
+  Name: 'First Name',
+  lastName: 'Last Name',
+  Mobile: 'Mobile',
+  Email: 'Email',
+  number: 'number',
+  email: 'email'
+}
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -25,6 +81,8 @@ export class HomePage implements OnInit {
 
   private secureKey: string = ""
   private secureIV: string = ""
+  private crashlytics: any = null
+  public screenshotURI: string | null = null
 
   constructor(
     private platform: Platform,
@@ -40,27 +98,136 @@ export class HomePage implements OnInit {
     private market: Market,
     private nativeGeocoder: NativeGeocoder,
     private smsRetrieverApi: SmsRetrieverApi,
-    private uniqueDeviceID: UniqueDeviceID
+    private uniqueDeviceID: UniqueDeviceID,
+    private facebook: Facebook,
+    private firebaseAnalytics: FirebaseAnalytics,
+    private firebaseCrashlytics: FirebaseCrashlytics,
+    private mediaCapture: MediaCapture,
+    private storage: Storage
   ) {}
 
-  async ngOnInit() {
-    // this.secureKey = await this.aes256.generateSecureKey(password)
-    // this.secureIV = await this.aes256.generateSecureIV(password)
-    // this.aes256.encrypt(this.secureKey, this.secureIV, "Ashish").then((res) => {
-    //   console.log("encrypt: ", res)
-    //   this.aes256.decrypt(this.secureKey, this.secureIV, res).then((res) => console.log("decrypt: ", res)).catch(err => console.log("decrypt Error: ", err))
-    // }).catch(err => console.log("encrypt Error: ", err))
-    // this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then((res) => console.log("checkPermission: ", res)).catch(err => console.log("checkPermission Error: ", err))
-    // this.appVersion.getVersionNumber().then((res) => console.log("getVersionNumber: ", res)).catch(err => console.log("getVersionNumber Error: ", err))
-    // let scheme = null
-    // if (this.platform.is("android")) {
-    //   scheme = "com.instagram.android"
-    // } else {
-    //   scheme = "instagram://"
-    // }
-    // this.appAvailability.check(scheme).then((res) => console.log("appAvailability: ", res)).catch(err => console.log("appAvailability Error: ", err))
-    // this.calendar.listCalendars().then((res) => console.log("listCalendars: ", res)).catch(err => console.log("listCalendars Error: ", err))
-    // this.filePath.resolveNativePath("content://com.android").then((res) => console.log("resolveNativePath: ", res)).catch(err => console.log("resolveNativePath Error: ", err))
+  ngOnInit() {
+    // this.testCode()
+    this.platform.ready().then(async () => {
+      let permStatus = await PushNotifications.checkPermissions();
+
+      if (permStatus.receive === 'prompt') {
+        permStatus = await PushNotifications.requestPermissions();
+      }
+
+      if (permStatus.receive !== 'granted') {
+        throw new Error('User denied permissions!');
+      }
+
+      await PushNotifications.register();
+      PushNotifications.register().then(() => {
+        console.log("PushNotifications registered")
+        PushNotifications.addListener("registration", token => {
+          console.info('Registration token: ', token.value);
+          (<any> window).AEP.setPushIdentifier(token.value,
+            function (value: any) {
+                console.log("sucuss Push", value);
+            }, function (err: any) {
+                console.log("fail Push", err);
+            }
+        );
+        });
+      
+        PushNotifications.addListener('registrationError', err => {
+          console.error('Registration error: ', err.error);
+        });
+      
+        PushNotifications.addListener('pushNotificationReceived', notification => {
+          console.log('Push notification received: ', notification);
+        });
+      
+        PushNotifications.addListener('pushNotificationActionPerformed', notification => {
+          console.log('Push notification action performed', notification.actionId, notification.inputValue);
+        });
+      }).catch(err => console.log("PushNotifications.register Error: ", err));
+      
+    })
+  }
+
+  private addAndroidShortcuts() {
+    const Shortcuts = (<any> window)?.plugins?.Shortcuts
+    if (!Shortcuts) return;
+    let actions: any[] = [];
+    shortcutActions.forEach(action => {
+      let shortcut = {
+        id: action.type,
+        shortLabel: action.title,
+        iconFromResource: action.iconTemplate,
+        intent: {
+          action: action.type,
+          categories: [
+            action.type,
+            'launch'
+          ],
+          data: {
+            type: action.type,
+            title: action.title
+          },
+        }
+      };  
+      actions.push(shortcut);
+    });
+    Shortcuts.setDynamic(actions, () => {
+      console.log('Shortcuts were applied successfully');
+    }, (error: any) => {
+      console.log('Error: ' + error);
+    });
+    Shortcuts.getIntent((intent: any) => {
+      if (intent && intent.data && typeof(intent.data) == 'object') {
+        console.log("Intent::>", JSON.parse(intent.data));
+        if (('type' in intent.data)) {
+          localStorage.setItem("payload", JSON.stringify(intent.data));
+        }
+      }
+    });
+  }
+
+  testCrash() {
+    this.crashlytics.crash()
+  }
+
+  pickContants() {
+    Contacts.getContacts({projection: { name: true, phones: true, postalAddresses: true }}).then((res) => console.log("Contacts.getContacts: ", res)).catch(err => console.log("Contacts.getContacts Error: ", err));
+  }
+
+  captureVideo() {
+    this.mediaCapture.captureVideo({
+      duration: 2
+    }).then((res) => console.log("Contacts.requestPermissions: ", res)).catch(err => console.log("Contacts.requestPermissions Error: ", err));
+  }
+
+  private async testCode() {
+    this.addAndroidShortcuts()
+    this.storage.create().then((s) => {
+      s.set("temp", "value")
+    }).catch(err => console.log("storage.create Error: ", err));
+    Contacts.requestPermissions().then((res) => console.log("Contacts.requestPermissions: ", res)).catch(err => console.log("Contacts.requestPermissions Error: ", err));
+    this.initializechat()
+    this.crashlytics = this.firebaseCrashlytics.initialise()
+    this.firebaseAnalytics.logEvent("Home Page", {}).then((res) => console.log("firebaseAnalytics.logEvent: ", res)).catch(err => console.log("firebaseAnalytics.logEvent Error: ", err));
+    this.facebook.getApplicationId().then((res) => console.log("getApplicationId: ", res)).catch(err => console.log("getApplicationId Error: ", err));
+    this.secureKey = await this.aes256.generateSecureKey(password)
+    this.secureIV = await this.aes256.generateSecureIV(password)
+    this.aes256.encrypt(this.secureKey, this.secureIV, "Ashish").then((res) => {
+      console.log("encrypt: ", res)
+      this.aes256.decrypt(this.secureKey, this.secureIV, res).then((res) => console.log("decrypt: ", res)).catch(err => console.log("decrypt Error: ", err))
+    }).catch(err => console.log("encrypt Error: ", err))
+    this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then((res) => console.log("checkPermission: ", res)).catch(err => console.log("checkPermission Error: ", err))
+    this.appVersion.getVersionNumber().then((res) => console.log("getVersionNumber: ", res)).catch(err => console.log("getVersionNumber Error: ", err))
+    let scheme = null
+    if (this.platform.is("android")) {
+      scheme = "com.instagram.android"
+    } else {
+      scheme = "instagram://"
+    }
+    this.appAvailability.check(scheme).then((res) => console.log("appAvailability: ", res)).catch(err => console.log("appAvailability Error: ", err))
+    this.calendar.listCalendars().then((res) => console.log("listCalendars: ", res)).catch(err => console.log("listCalendars Error: ", err))
+    this.filePath.resolveNativePath("content://com.android").then((res) => console.log("resolveNativePath: ", res)).catch(err => console.log("resolveNativePath Error: ", err))
     this.globalization.getPreferredLanguage().then((res) => console.log("getPreferredLanguage: ", res)).catch(err => console.log("getPreferredLanguage Error: ", err));
     (<any> window).IRoot.isRooted((res: any) => {
       console.log("isRooted: ", res)
@@ -78,16 +245,23 @@ export class HomePage implements OnInit {
     if (this.platform.is("android")) {
       const nonce = this.randomString(16)
       console.log("this.nonce", nonce);
-        // if ((<any> window).cordova?.plugins?.TLCPlayIntegrity) {
-        //   (<any> window).cordova.plugins.TLCPlayIntegrity.certifyKey(nonce, (result: any) => {
-        //     console.log("Play Integrity Result: ", result)
-        //   }, (error: any) => {
-        //     console.log("Play Integrity Error: ", error)
-        //   })
-        // }
+        if ((<any> window).cordova?.plugins?.TLCPlayIntegrity) {
+          (<any> window).cordova.plugins.TLCPlayIntegrity.certifyKey(nonce, (result: any) => {
+            console.log("Play Integrity Result: ", result)
+          }, (error: any) => {
+            console.log("Play Integrity Error: ", error)
+          })
+        }
         this.smsRetrieverApi.getHashString().then((res) => console.log("getHashString: ", res)).catch(err => console.log("getHashString Error: ", err));
       }
       this.uniqueDeviceID.get().then((res) => console.log("uniqueDeviceID: ", res)).catch(err => console.log("uniqueDeviceID Error: ", err));
+      // this.platform.ready().then(() => {
+      //   (<any>window).AEP.trackState("Prestige Club: login/signup:C_PC_Onboarding_AddaCelebratorydate", {}, (data: any) => {
+      //     console.log('success in analytics', data);
+      //   }, (e: any) => {
+      //     console.log('error in analytics', e);
+      //   });
+      // })
   }
 
   public callNumberTo(number: string) {
@@ -129,8 +303,119 @@ export class HomePage implements OnInit {
   }
 
   takeScreenshot() {
-    (<any>navigator).screenshot.URI((res: any, data: any) => {
-      console.log("screenshot: ", res, data)
-    }, 100)
+    (<any>navigator).screenshot.URI((error: any, res: any) =>{
+      if (error) {
+        console.error("screenshot.save Error: ", error);
+      } else {
+        console.log('screenshot.save', res);
+        this.screenshotURI = res?.URI
+        setTimeout(() => {
+          this.screenshotURI = null
+        }, 2000)
+      }
+    });
+  }
+
+  initializechat() {
+
+    const SalesforceSnapIns = (<any>window).cordova.plugins.SalesforceSnapIns;
+    SalesforceSnapIns.initialize({
+      liveAgentChat: {
+        liveAgentPod: CHAT.liveAgentPod,
+        orgId: CHAT.chatOrgId,
+        deploymentId: CHAT.deploymentId,
+        buttonId: CHAT.buttonId
+      },
+      colors: {
+        navbarBackground: CHAT.navbarBackground,
+        navbarInverted: CHAT.navbarInverted,
+        brandPrimary: CHAT.brandPrimary,
+        brandSecondary: CHAT.brandSecondary,
+        brandPrimaryInverted: CHAT.brandPrimaryInverted,
+        brandSecondaryInverted: CHAT.brandSecondaryInverted,
+        contrastPrimary: CHAT.contrastPrimary,
+        contrastSecondary: CHAT.contrastSecondary,
+        contrastTertiary: CHAT.contrastTertiary,
+        contrastQuaternary: CHAT.contrastQuaternary,
+        contrastInverted: CHAT.contrastInverted,
+        feedbackPrimary: CHAT.feedbackPrimary,
+        feedbackSecondary: CHAT.feedbackSecondary,
+        feedbackTertiary: CHAT.feedbackTertiary,
+        overlay: CHAT.overlay
+      }
+    });
+
+
+  }
+
+  //..Start With Visitor Chat here//
+  startWithVisitorChat() {
+
+    const SalesforceSnapIns = (<any>window).cordova.plugins.SalesforceSnapIns;
+    SalesforceSnapIns.clearPrechatFields();
+    SalesforceSnapIns.addPrechatField({
+      type: CHAT.text,
+      label: CHAT.Name,
+      required: true
+    });
+
+    SalesforceSnapIns.addPrechatField({
+      type: CHAT.text,
+      label: CHAT.lastName,
+      required: true
+    });
+
+    SalesforceSnapIns.addPrechatField({
+      type: CHAT.text,
+      label: CHAT.Mobile,
+      required: true,
+      keyboardType: SalesforceSnapIns.KEYBOARD_TYPE_NUMBER_PAD,
+      autocorrectionType: SalesforceSnapIns.AUTOCORRECTION_TYPE_NO
+    });
+
+    SalesforceSnapIns.addPrechatField({
+      type: CHAT.text,
+      label: CHAT.Email,
+      required: true,
+      keyboardType: SalesforceSnapIns.KEYBOARD_TYPE_EMAIL_ADDRESS,
+      autocorrectionType: SalesforceSnapIns.AUTOCORRECTION_TYPE_NO
+    });
+
+    // SalesforceSnapIns.addPrechatField({
+    //   type: 'hidden',
+    //   label: 'Progran id', // demo label name given 
+    //   value: environment.headers.program_id,
+    //   required: false
+    // });
+
+    let object = this;
+    SalesforceSnapIns.determineAvailability((available: any) => {
+      console.log("available", available);
+      if (available) {
+        SalesforceSnapIns.openLiveAgentChat((check: any) => {
+          console.log("check2", check);
+          if (check == 'email') {
+            //console.log("check", check);
+            setTimeout(() => {
+              console.log("please enter valid email.");
+            }, 500)
+
+          } else if (check == 'mobile') {
+            setTimeout(() => {
+              console.log("please enter valid mobile number.");
+            }, 500)
+          } else if (check == 'mobileemail') {
+            setTimeout(() => {
+              console.log("please enter valid mobile number and email.");
+            }, 500)
+          }
+        }, function () {
+        });
+      } else {
+        console.log("Agent is unavailable")
+      }
+    }, (err: any) => {
+      console.log("determineAvailability Error: ", err)
+    });
   }
 }

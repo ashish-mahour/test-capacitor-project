@@ -12,6 +12,15 @@
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>de</string>
+		<string>nl</string>
+		<string>fr</string>
+		<string>it</string>
+		<string>pt-BR</string>
+	</array>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
@@ -20,8 +29,28 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>twitter</string>
+		<string>fb</string>
+		<string>instagram</string>
+		<string>whatsapp</string>
+		<string>cydia</string>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Using Calender?</string>
+	<key>NSContactsUsageDescription</key>
+	<string>$CONTACTS_USAGE_DESCRIPTION</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Checking Face ID?</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Checking Location?</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -45,30 +74,91 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-	<key>LSApplicationQueriesSchemes</key>
-    <array>
-      <string>twitter</string>
-      <string>fb</string>
-      <string>instagram</string>
-      <string>whatsapp</string>
-      <string>cydia</string>
-    </array>
-	<key>NSContactsUsageDescription</key>
-	<string>$CONTACTS_USAGE_DESCRIPTION</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Using Calender?</string>
-	<key>CFBundleLocalizations</key>
+    <key>FacebookAutoLogAppEventsEnabled</key>
+    <true />
+    <key>FacebookHybridAppEvents</key>
+    <string>false</string>
+    <key>FacebookAdvertiserIDCollectionEnabled</key>
+    <true />
+	<key>FacebookAdvertiserIDCollectionEnabled_PLACEHOLDER</key>
+	<string>FACEBOOK_ADVERTISER_ID_COLLECTION_PLACEHOLDER</string>
+	
+    <key>NSAppTransportSecurity</key>
+    <dict>
+      <key>NSAllowsArbitraryLoads</key>
+      <false/>
+      <key>NSExceptionDomains</key>
+      <dict>
+        <key>localhost</key>
+        <dict>
+          <key>NSExceptionAllowsInsecureHTTPLoads</key>
+          <true/>
+        </dict>
+		<key>facebook.com</key>
+		<dict/>
+        <key>m.facebook.com</key>
+        <dict/>
+        <key>graph.facebook.com</key>
+        <dict/>
+        <key>api.facebook.com</key>
+        <dict/>
+        <key>fbcdn.net</key>
+        <dict>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+        </dict>
+        <key>akamaihd.net</key>
+        <dict>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+        </dict>
+        <key>prod.prestigeclub.in</key>
+        <dict>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+        </dict>
+        <key>stage.prestigeclub.in</key>
+        <dict>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+        </dict>
+        <key>customerapp.tlcgroup-platform.com</key>
+        <dict>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+        </dict>
+        <key>customerapp-uat.tlcgroup-test-platform.com</key>
+        <dict>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+        </dict>
+        <key>customerapp-dev-int.tlcgroup-test-platform.com</key>
+        <dict>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+        </dict>
+        <key>customerapp-dev.tlcgroup-test-platform.com</key>
+        <dict>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+        </dict>
+      </dict>
+    </dict>
+	<key>FacebookUrlSchemeSuffix</key>
+	<string>FACEBOOK_URL_SCHEME_SUFFIX_PLACEHOLDER</string>
+	<key>FacebookAutoLogAppEventsEnabled_PLACEHOLDER</key>
+	<string>FACEBOOK_AUTO_LOG_APP_EVENTS_PLACEHOLDER</string>
+	<key>CFBundleURLTypes</key>
 	<array>
-	<string>en</string>
-	<string>de</string>
-	<string>nl</string>
-	<string>fr</string>
-	<string>it</string>
-	<string>pt-BR</string>
+	<dict>
+	<key>CFBundleURLSchemes</key>
+	<array>
+	<string>fb$APP_IDFACEBOOK_URL_SCHEME_SUFFIX_PLACEHOLDER</string>
+	<string>OTHER_APP_SCHEMES_PLACEHOLDER</string>
 	</array>
-	<key>NSFaceIDUsageDescription</key>
-	<string>Checking Face ID?</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Checking Location?</string>
+	</dict>
+	</array>
+	<key>NSContactsUsageDescription</key>
+	<string>Contacts?</string>
 </dict>
 </plist>

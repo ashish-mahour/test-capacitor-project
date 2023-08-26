@@ -21,10 +21,25 @@ import { NativeGeocoder } from '@awesome-cordova-plugins/native-geocoder/ngx';
 import { NetworkInterface } from '@awesome-cordova-plugins/network-interface/ngx';
 import { SmsRetrieverApi } from 'awesome-cordova-plugins-sms-retriever-api/ngx';
 import { UniqueDeviceID } from '@awesome-cordova-plugins/unique-device-id/ngx';
+import { BranchIo } from "@awesome-cordova-plugins/branch-io/ngx";
+import { Facebook } from '@awesome-cordova-plugins/facebook/ngx';
+import { FirebaseAnalytics } from "@awesome-cordova-plugins/firebase-analytics/ngx"
+import { FirebaseCrashlytics } from "@awesome-cordova-plugins/firebase-crashlytics/ngx"
+import { MediaCapture } from '@awesome-cordova-plugins/media-capture/ngx';
+import { IonicStorageModule } from '@ionic/storage-angular';
+import { Drivers } from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule,
+    IonicStorageModule.forRoot({
+      name: "TEST_DB",
+      driverOrder : [Drivers.IndexedDB, Drivers.LocalStorage],
+    })
+  ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, 
     CallNumber, 
@@ -41,7 +56,12 @@ import { UniqueDeviceID } from '@awesome-cordova-plugins/unique-device-id/ngx';
     NativeGeocoder,
     NetworkInterface,
     SmsRetrieverApi,
-    UniqueDeviceID
+    UniqueDeviceID,
+    BranchIo,
+    Facebook,
+    FirebaseAnalytics,
+    FirebaseCrashlytics,
+    MediaCapture
   ],
   bootstrap: [AppComponent],
 })

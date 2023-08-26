@@ -33,14 +33,43 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-button (click)="pickContact()">
-        Pick Contants
-       </ion-button>
+      <ion-col>
+        <ion-button (click)="pickContact()">
+          Pick Contants
+         </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="testCrash()">
+          Test Crash
+         </ion-button>
+      </ion-col>
     </ion-row>
     <ion-row>
-      <ion-button (click)="showLock()">
-        Show Lock
-       </ion-button>
+      <ion-col>
+        <ion-button (click)="showLock()">
+          Show Lock
+         </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="startWithVisitorChat()">
+          Start Chat
+         </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="pickContact()">
+          Pick Contants
+         </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="captureVideo()">
+          Capture Video
+         </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="screenshotURI">
+      <img style="width: 100%;" [src]="screenshotURI">
     </ion-row>
   </ion-grid>
 </ion-content>

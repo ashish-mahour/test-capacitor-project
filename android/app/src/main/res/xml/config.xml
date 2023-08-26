@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  
   <access origin="*" />
   
   <feature name="Permissions">
@@ -21,6 +22,11 @@
 
   <feature name="Base64ToGallery">
     <param name="android-package" value="it.nexxa.base64ToGallery.Base64ToGallery"/>
+  </feature>
+
+  <feature name="AEPMobile_PhoneGap">
+    <param name="android-package" value="com.aep.AEPMobile_PhoneGap" onload="true"/>
+    <param name="onload" value="true"/>
   </feature>
 
   <feature name="AES256">
@@ -47,6 +53,15 @@
     <param name="android-package" value="nl.xservices.plugins.Calendar"/>
   </feature>
 
+  <feature name="File">
+    <param name="android-package" value="org.apache.cordova.file.FileUtils"/>
+    <param name="onload" value="true"/>
+  </feature>
+
+  <feature name="FileTransfer">
+    <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer"/>
+  </feature>
+
   <feature name="FilePath">
     <param name="android-package" value="com.hiddentao.cordova.filepath.FilePath"/>
     <param name="onload" value="true"/>
@@ -64,6 +79,10 @@
     <param name="android-package" value="com.xmartlabs.cordova.market.Market"/>
   </feature>
 
+  <feature name="Capture">
+    <param name="android-package" value="org.apache.cordova.mediacapture.Capture"/>
+  </feature>
+
   <feature name="NativeGeocoder">
     <param name="android-package" value="cordova.plugin.nativegeocoder.NativeGeocoder"/>
   </feature>
@@ -74,6 +93,10 @@
 
   <feature name="networkinterface">
     <param name="android-package" value="com.albahra.plugin.networkinterface.networkinterface"/>
+  </feature>
+
+  <feature name="ShortcutsPlugin">
+    <param name="android-package" value="com.plugins.shortcuts.ShortcutsPlugin"/>
   </feature>
 
   <feature name="SMSRetriever">
@@ -97,4 +120,6 @@
   </feature>
 
   
+  <preference name="environmentIDValue" value="0b11157d649c/e12007c915ba/launch-a00885a9c4aa-staging" />
+  <preference name="platform" value="web" />
 </widget>
