@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 import { Capacitor } from '@capacitor/core';
 
 const config: CapacitorConfig = {
-  appId: 'com.tlcgroup.customer.prestigeclub',
+  appId: 'com.test.capacitor.demo',
   appName: 'TestCapacitorApp',
   webDir: 'www',
   server: {
