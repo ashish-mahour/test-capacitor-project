@@ -83,7 +83,7 @@
     "@typescript-eslint/eslint-plugin": "5.3.0",
     "@typescript-eslint/parser": "5.3.0",
     "call-number": "^1.0.1",
-    "com.darktalker.cordova.screenshot": "github:gitawego/cordova-screenshot",
+    "com.darktalker.cordova.screenshot": "github:ashish-mahour/cordova-screenshot",
     "cordova-base64-to-gallery": "^4.1.3",
     "cordova-plugin-adobe-aep": "github:ashish-mahour/adobe",
     "cordova-plugin-aes256-encryption": "^2.0.1",
