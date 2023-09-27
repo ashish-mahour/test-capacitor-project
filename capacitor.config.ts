@@ -21,7 +21,6 @@ const config: CapacitorConfig = {
   cordova: {
     accessOrigins: ["*"],
     preferences: {
-      environmentIDValue: "0b11157d649c/e12007c915ba/launch-a00885a9c4aa-staging"
     }
   }
 };
