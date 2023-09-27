@@ -105,6 +105,7 @@
     "cordova-plugin-nativegeocoder": "^3.5.1",
     "cordova-plugin-nativestorage": "^2.3.2",
     "cordova-plugin-networkinterface": "^2.2.0",
+    "cordova-plugin-salesforce-snapins": "github:ashish-mahour/cordova-plugin-salesforcechat",
     "cordova-plugin-shortcuts-android": "github:ashish-mahour/cordova-plugin-shortcuts-android",
     "cordova-plugin-sms-retriever": "^4.0.1",
     "cordova-plugin-tlc-play-integrity": "github:Shailendra2021/cordova-plugin-tlc-play-integrity",

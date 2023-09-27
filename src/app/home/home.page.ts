@@ -45,10 +45,10 @@ const shortcutActions =  [
   }
 ]
 export const CHAT = {
-  liveAgentPod: null,
-  chatOrgId: null,
-  deploymentId: null,
-  buttonId: null,
+  liveAgentPod: 'd.la2-c1cs-hnd.salesforceliveagent.com',
+  chatOrgId: '00D1y0000008lSY',
+  deploymentId: '5721y000000001d',
+  buttonId: '5731y0000000022',
   navbarBackground: "#FAFAFA",
   navbarInverted: "#010101",
   brandPrimary: "#2c4390",
@@ -123,14 +123,14 @@ export class HomePage implements OnInit {
       PushNotifications.register().then(() => {
         console.log("PushNotifications registered")
         PushNotifications.addListener("registration", token => {
-          console.info('Registration token: ', token.value);
-          (<any> window).AEP.setPushIdentifier(token.value,
-            function (value: any) {
-                console.log("sucuss Push", value);
-            }, function (err: any) {
-                console.log("fail Push", err);
-            }
-        );
+          console.info('Registration token: ', token);
+          // (<any> window).AEP.setPushIdentifier(token.value,
+          //   function (value: any) {
+          //       console.log("sucuss Push", value);
+          //   }, function (err: any) {
+          //       console.log("fail Push", err);
+          //   }
+          // );
         });
       
         PushNotifications.addListener('registrationError', err => {
@@ -202,12 +202,12 @@ export class HomePage implements OnInit {
   }
 
   private async testCode() {
+    this.initializechat()
     this.addAndroidShortcuts()
     this.storage.create().then((s) => {
       s.set("temp", "value")
     }).catch(err => console.log("storage.create Error: ", err));
     Contacts.requestPermissions().then((res) => console.log("Contacts.requestPermissions: ", res)).catch(err => console.log("Contacts.requestPermissions Error: ", err));
-    this.initializechat()
     this.crashlytics = this.firebaseCrashlytics.initialise()
     this.firebaseAnalytics.logEvent("Home Page", {}).then((res) => console.log("firebaseAnalytics.logEvent: ", res)).catch(err => console.log("firebaseAnalytics.logEvent Error: ", err));
     this.facebook.getApplicationId().then((res) => console.log("getApplicationId: ", res)).catch(err => console.log("getApplicationId Error: ", err));
@@ -350,7 +350,10 @@ export class HomePage implements OnInit {
 
   //..Start With Visitor Chat here//
   startWithVisitorChat() {
-
+    if (!(<any>window).cordova.plugins.SalesforceSnapIns) {
+      console.log("Plugin not found.")
+      return; 
+    }
     const SalesforceSnapIns = (<any>window).cordova.plugins.SalesforceSnapIns;
     SalesforceSnapIns.clearPrechatFields();
     SalesforceSnapIns.addPrechatField({

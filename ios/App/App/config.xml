@@ -95,6 +95,10 @@
     <param name="ios-package" value="CDVNetworkInterface" onload="true"/>
   </feature>
 
+  <feature name="SalesforceSnapInsPlugin">
+    <param name="ios-package" value="SalesforceSnapInsPlugin"/>
+  </feature>
+
   <feature name="UniqueDeviceID">
     <param name="ios-package" value="CDVUniqueDeviceID"/>
     <param name="onload" value="true"/>
@@ -109,6 +113,4 @@
   </feature>
 
   
-  <preference name="environmentIDValue" value="0b11157d649c/e12007c915ba/launch-a00885a9c4aa-staging" />
-  <preference name="platform" value="web" />
 </widget>

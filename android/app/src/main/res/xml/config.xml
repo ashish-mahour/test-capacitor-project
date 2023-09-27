@@ -95,6 +95,11 @@
     <param name="android-package" value="com.albahra.plugin.networkinterface.networkinterface"/>
   </feature>
 
+  <feature name="SalesforceSnapInsPlugin">
+    <param name="android-package" value="org.apache.cordova.salesforce.SalesforceSnapInsPlugin"/>
+    <param name="onload" value="true"/>
+  </feature>
+
   <feature name="ShortcutsPlugin">
     <param name="android-package" value="com.plugins.shortcuts.ShortcutsPlugin"/>
   </feature>
@@ -120,6 +125,4 @@
   </feature>
 
   
-  <preference name="environmentIDValue" value="0b11157d649c/e12007c915ba/launch-a00885a9c4aa-staging" />
-  <preference name="platform" value="web" />
 </widget>

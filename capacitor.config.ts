@@ -16,14 +16,15 @@ const config: CapacitorConfig = {
         androidSplashResourceName: "splash_full"
     },
     PushNotifications: {
-      presentationOptions: ["badge", "sound", "alert"],
-    }
+      presentationOptions: ["badge", "sound", "alert"]
+    },
+    
   },  
   cordova: {
     accessOrigins: ["*"],
     preferences: {
-      environmentIDValue: "0b11157d649c/e12007c915ba/launch-a00885a9c4aa-staging",
-      platform: Capacitor.getPlatform() 
+      // environmentIDValue: "0b11157d649c/e12007c915ba/launch-a00885a9c4aa-staging",
+      // platform: Capacitor.getPlatform() 
     }
   }
 };

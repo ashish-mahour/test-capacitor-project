@@ -68,6 +68,10 @@ PODS:
     - ACPTarget (~> 2.1)
     - ACPUserProfile (~> 2.1)
     - CapacitorCordova
+    - ServiceSDK (~> 238.0)
+  - ServiceSDK (238.0.0):
+    - ServiceSDK/All (= 238.0.0)
+  - ServiceSDK/All (238.0.0)
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
@@ -85,6 +89,8 @@ DEPENDENCIES:
   - CordovaPluginsStatic (from `../capacitor-cordova-ios-plugins`)
 
 SPEC REPOS:
+  https://github.com/goinstant/pods-specs-public:
+    - ServiceSDK
   trunk:
     - ACPAnalytics
     - ACPCampaign
@@ -123,13 +129,13 @@ EXTERNAL SOURCES:
     :path: "../capacitor-cordova-ios-plugins"
 
 SPEC CHECKSUMS:
-  ACPAnalytics: 033c3824a7cac48a375aa5bdee567d691e5cafe5
-  ACPCampaign: af945ebc6b53ac8e1884fff82a52299234c8f8e7
-  ACPCore: 66872864b2419b5920060e7b7eb36cd615cbe0d3
-  ACPPlaces: 6d2f2f4a5d0eee5fd021c11219a7d6775e243ab8
-  ACPPlacesMonitor: 41bc81cef3dbc7857d9324fc92ed4a627df9a10f
-  ACPTarget: 66d5a8137f8e5afa1ce462d4678129456f126955
-  ACPUserProfile: 34bd51d00a2ae1add3d04eab0a313b73cb01b904
+  ACPAnalytics: 6b94de281850b4aff02882ec7091e89c811c7d87
+  ACPCampaign: aa9b3a5fc1b21028e6948a66fa41ac910eac1df8
+  ACPCore: 4328e8e8327e93f0c70ee44ae4cd2e0882302489
+  ACPPlaces: c97113afb7cb7885f1aa39e19620a02d1a54655c
+  ACPPlacesMonitor: f59b969cae9ce6cfd76600ecbe2004a8ceaac355
+  ACPTarget: cf035455c8354fc22f91647914d042135d001a35
+  ACPUserProfile: bfb3c34dd4e2f0129838867b099506b4c6657fd0
   Capacitor: 6f44cbc33839b8a4202b8eac97041fe584083417
   CapacitorApp: 024e1b1bea5f883d79f6330d309bc441c88ad04a
   CapacitorCommunityContacts: 45de2477f7dc6265d267677939a2c75465d2ed87
@@ -142,8 +148,9 @@ SPEC CHECKSUMS:
   CapacitorStatusBar: 565c0a1ebd79bb40d797606a8992b4a105885309
   CordovaPlugins: d9fbb91b7bfbdb456574a2665234564193d97360
   CordovaPluginsResources: 1b3992e05cb6336d2850cd77dd5e3054f2f76f96
-  CordovaPluginsStatic: 7149e8a7ed6d0242f60f54100f5924a37f0d8b89
+  CordovaPluginsStatic: 685fbcf177ad8dbd5d8dd9f16619796b238359dc
+  ServiceSDK: d6a025297d934f5ed9bc6ec04690c6e0a1683408
 
-PODFILE CHECKSUM: 7744a775a2caeffef94da333fc29040031994fd0
+PODFILE CHECKSUM: c91c09cfdc4041bf212395012a1078dde3bed266
 
 COCOAPODS: 1.12.1
