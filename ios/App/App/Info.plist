@@ -46,7 +46,7 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>Using Calender?</string>
 	<key>NSContactsUsageDescription</key>
-	<string>$CONTACTS_USAGE_DESCRIPTION</string>
+	<string>Contacts?</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Checking Face ID?</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -74,91 +74,88 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-    <key>FacebookAutoLogAppEventsEnabled</key>
-    <true />
-    <key>FacebookHybridAppEvents</key>
-    <string>false</string>
-    <key>FacebookAdvertiserIDCollectionEnabled</key>
-    <true />
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<true/>
+	<key>FacebookHybridAppEvents</key>
+	<string>false</string>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<true/>
 	<key>FacebookAdvertiserIDCollectionEnabled_PLACEHOLDER</key>
 	<string>FACEBOOK_ADVERTISER_ID_COLLECTION_PLACEHOLDER</string>
-	
-    <key>NSAppTransportSecurity</key>
-    <dict>
-      <key>NSAllowsArbitraryLoads</key>
-      <false/>
-      <key>NSExceptionDomains</key>
-      <dict>
-        <key>localhost</key>
-        <dict>
-          <key>NSExceptionAllowsInsecureHTTPLoads</key>
-          <true/>
-        </dict>
-		<key>facebook.com</key>
-		<dict/>
-        <key>m.facebook.com</key>
-        <dict/>
-        <key>graph.facebook.com</key>
-        <dict/>
-        <key>api.facebook.com</key>
-        <dict/>
-        <key>fbcdn.net</key>
-        <dict>
-          <key>NSIncludesSubdomains</key>
-          <true/>
-        </dict>
-        <key>akamaihd.net</key>
-        <dict>
-          <key>NSIncludesSubdomains</key>
-          <true/>
-        </dict>
-        <key>prod.prestigeclub.in</key>
-        <dict>
-          <key>NSIncludesSubdomains</key>
-          <true/>
-        </dict>
-        <key>stage.prestigeclub.in</key>
-        <dict>
-          <key>NSIncludesSubdomains</key>
-          <true/>
-        </dict>
-        <key>customerapp.tlcgroup-platform.com</key>
-        <dict>
-          <key>NSIncludesSubdomains</key>
-          <true/>
-        </dict>
-        <key>customerapp-uat.tlcgroup-test-platform.com</key>
-        <dict>
-          <key>NSIncludesSubdomains</key>
-          <true/>
-        </dict>
-        <key>customerapp-dev-int.tlcgroup-test-platform.com</key>
-        <dict>
-          <key>NSIncludesSubdomains</key>
-          <true/>
-        </dict>
-        <key>customerapp-dev.tlcgroup-test-platform.com</key>
-        <dict>
-          <key>NSIncludesSubdomains</key>
-          <true/>
-        </dict>
-      </dict>
-    </dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<false/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>localhost</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+			<key>facebook.com</key>
+			<dict/>
+			<key>m.facebook.com</key>
+			<dict/>
+			<key>graph.facebook.com</key>
+			<dict/>
+			<key>api.facebook.com</key>
+			<dict/>
+			<key>fbcdn.net</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+			<key>akamaihd.net</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+			<key>prod.prestigeclub.in</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+			<key>stage.prestigeclub.in</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+			<key>customerapp.tlcgroup-platform.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+			<key>customerapp-uat.tlcgroup-test-platform.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+			<key>customerapp-dev-int.tlcgroup-test-platform.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+			<key>customerapp-dev.tlcgroup-test-platform.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
 	<key>FacebookUrlSchemeSuffix</key>
 	<string>FACEBOOK_URL_SCHEME_SUFFIX_PLACEHOLDER</string>
 	<key>FacebookAutoLogAppEventsEnabled_PLACEHOLDER</key>
 	<string>FACEBOOK_AUTO_LOG_APP_EVENTS_PLACEHOLDER</string>
 	<key>CFBundleURLTypes</key>
 	<array>
-	<dict>
-	<key>CFBundleURLSchemes</key>
-	<array>
-	<string>fb$APP_IDFACEBOOK_URL_SCHEME_SUFFIX_PLACEHOLDER</string>
-	<string>OTHER_APP_SCHEMES_PLACEHOLDER</string>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb$APP_IDFACEBOOK_URL_SCHEME_SUFFIX_PLACEHOLDER</string>
+				<string>OTHER_APP_SCHEMES_PLACEHOLDER</string>
+			</array>
+		</dict>
 	</array>
-	</dict>
-	</array>
-	<key>NSContactsUsageDescription</key>
-	<string>Contacts?</string>
 </dict>
 </plist>

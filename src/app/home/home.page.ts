@@ -116,36 +116,35 @@ export class HomePage implements OnInit {
       }
 
       if (permStatus.receive !== 'granted') {
-        throw new Error('User denied permissions!');
+        console.error('User denied permissions!');
       }
 
-      await PushNotifications.register();
       PushNotifications.register().then(() => {
         console.log("PushNotifications registered")
-        PushNotifications.addListener("registration", token => {
-          console.info('Registration token: ', token);
-          // (<any> window).AEP.setPushIdentifier(token.value,
-          //   function (value: any) {
-          //       console.log("sucuss Push", value);
-          //   }, function (err: any) {
-          //       console.log("fail Push", err);
-          //   }
-          // );
-        });
-      
-        PushNotifications.addListener('registrationError', err => {
-          console.error('Registration error: ', err.error);
-        });
-      
-        PushNotifications.addListener('pushNotificationReceived', notification => {
-          console.log('Push notification received: ', notification);
-        });
-      
-        PushNotifications.addListener('pushNotificationActionPerformed', notification => {
-          console.log('Push notification action performed', notification.actionId, notification.inputValue);
-        });
       }).catch(err => console.log("PushNotifications.register Error: ", err));
       
+      PushNotifications.addListener("registration", token => {
+        console.info('Registration token: ', token);
+        // (<any> window).AEP.setPushIdentifier(token.value,
+        //   function (value: any) {
+        //       console.log("sucuss Push", value);
+        //   }, function (err: any) {
+        //       console.log("fail Push", err);
+        //   }
+        // );
+      });
+    
+      PushNotifications.addListener('registrationError', err => {
+        console.error('Registration error: ', err.error);
+      });
+    
+      PushNotifications.addListener('pushNotificationReceived', notification => {
+        console.log('Push notification received: ', notification);
+      });
+    
+      PushNotifications.addListener('pushNotificationActionPerformed', notification => {
+        console.log('Push notification action performed', notification.actionId, notification.inputValue);
+      });
     })
   }
 
