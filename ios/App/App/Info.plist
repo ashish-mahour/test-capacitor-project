@@ -134,6 +134,8 @@
 	<string>Checking Face ID?</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Checking Location?</string>
+	<key>UIBackgroundModes</key>
+	<array/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

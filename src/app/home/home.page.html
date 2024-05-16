@@ -1,13 +1,13 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Testing Capacitor
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
-  <ion-grid>
+  <!-- <ion-grid>
     <ion-row>
       <ion-col>
         <ion-button (click)="callNumberTo('8860405864')">
@@ -71,5 +71,15 @@
     <ion-row *ngIf="screenshotURI">
       <img style="width: 100%;" [src]="screenshotURI">
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
+  <!-- <div class="container">
+    <ng-container *ngFor="let seat of seats">
+      <div class="seat" [ngStyle]="{ left: seat.x + 'px', top: (seat.y) + 'px', width: seat.width + 'px', height: seat.height + 'px' }"></div>
+    </ng-container>
+    <img src="/assets/imgs/hotel.png">
+    
+  </div> -->
+  <img id="cropped" src="/assets/imgs/cropped.jpg">
+  <img class="data" src="/assets/imgs/2.jpg">
+  <div id="container"></div>
 </ion-content>

@@ -21,7 +21,12 @@ import { Contacts } from "@capacitor-community/contacts"
 import { MediaCapture } from '@awesome-cordova-plugins/media-capture/ngx';
 import { Storage } from '@ionic/storage-angular';
 import { PushNotifications } from "@capacitor/push-notifications"
+// import * as cv from "@techstark/opencv-js"
+// import * as mobilenet from "@tensorflow-models/mobilenet"
 
+// mobilenet.load().then(model => {
+  
+// })
 const password = "123456"
 const shortcutActions =  [
   {
@@ -83,6 +88,32 @@ export class HomePage implements OnInit {
   private secureIV: string = ""
   private crashlytics: any = null
   public screenshotURI: string | null = null
+  public seats = [
+    {
+      x: 190,
+      y: 256,
+      width: 53,
+      height: 77
+    },
+    {
+      x: 246,
+      y: 311,
+      width: 60,
+      height: 77
+    },
+    {
+      x: 216,
+      y: 128,
+      width: 41,
+      height: 34
+    },
+    {
+      x: 337,
+      y: 104,
+      width: 224,
+      height: 170
+    }
+  ]
 
   constructor(
     private platform: Platform,
@@ -108,44 +139,45 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     // this.testCode()
-    this.platform.ready().then(async () => {
-      let permStatus = await PushNotifications.checkPermissions();
+    // this.platform.ready().then(async () => {
+    //   let permStatus = await PushNotifications.checkPermissions();
 
-      if (permStatus.receive === 'prompt') {
-        permStatus = await PushNotifications.requestPermissions();
-      }
+    //   if (permStatus.receive === 'prompt') {
+    //     permStatus = await PushNotifications.requestPermissions();
+    //   }
 
-      if (permStatus.receive !== 'granted') {
-        console.error('User denied permissions!');
-      }
+    //   if (permStatus.receive !== 'granted') {
+    //     console.error('User denied permissions!');
+    //   }
 
-      PushNotifications.register().then(() => {
-        console.log("PushNotifications registered")
-      }).catch(err => console.log("PushNotifications.register Error: ", err));
+    //   PushNotifications.register().then(() => {
+    //     console.log("PushNotifications registered")
+    //   }).catch(err => console.log("PushNotifications.register Error: ", err));
       
-      PushNotifications.addListener("registration", token => {
-        console.info('Registration token: ', token);
-        // (<any> window).AEP.setPushIdentifier(token.value,
-        //   function (value: any) {
-        //       console.log("sucuss Push", value);
-        //   }, function (err: any) {
-        //       console.log("fail Push", err);
-        //   }
-        // );
-      });
+    //   PushNotifications.addListener("registration", token => {
+    //     console.info('Registration token: ', token);
+    //     // (<any> window).AEP.setPushIdentifier(token.value,
+    //     //   function (value: any) {
+    //     //       console.log("sucuss Push", value);
+    //     //   }, function (err: any) {
+    //     //       console.log("fail Push", err);
+    //     //   }
+    //     // );
+    //   });
     
-      PushNotifications.addListener('registrationError', err => {
-        console.error('Registration error: ', err.error);
-      });
+    //   PushNotifications.addListener('registrationError', err => {
+    //     console.error('Registration error: ', err.error);
+    //   });
     
-      PushNotifications.addListener('pushNotificationReceived', notification => {
-        console.log('Push notification received: ', notification);
-      });
+    //   PushNotifications.addListener('pushNotificationReceived', notification => {
+    //     console.log('Push notification received: ', notification);
+    //   });
     
-      PushNotifications.addListener('pushNotificationActionPerformed', notification => {
-        console.log('Push notification action performed', notification.actionId, notification.inputValue);
-      });
-    })
+    //   PushNotifications.addListener('pushNotificationActionPerformed', notification => {
+    //     console.log('Push notification action performed', notification.actionId, notification.inputValue);
+    //   });
+    // })
+    this.detectObjects()
   }
 
   private addAndroidShortcuts() {
@@ -419,5 +451,111 @@ export class HomePage implements OnInit {
     }, (err: any) => {
       console.log("determineAvailability Error: ", err)
     });
+  }
+  private async trainModel() {
+    //img data set
+    const imageHTML = document.getElementById('cropped') as HTMLImageElement;    
+    if (!imageHTML) {
+      return;
+    }       
+    console.log('imageHTML::'+ imageHTML.src);
+    console.log("tfjs: ", (<any> window).tf)
+    //convert to tensor 
+    const tensorImg = (<any> window).tf.fromPixels(imageHTML);
+    tensorImg.data().then(async function (stuffTensImg: any){
+        console.log('stuffTensImg::'+stuffTensImg.toString());
+        
+    });
+    const model = (<any> window).tf.sequential();
+        
+    model.add((<any> window).tf.layers.conv2d({
+        kernelSize: 5,
+        filters: 20,
+        strides: 1,
+        activation: 'relu',
+        inputShape: [imageHTML.height, imageHTML.width, 3],
+    }));
+    
+    model.add((<any> window).tf.layers.maxPooling2d({
+        poolSize: [2, 2],
+        strides: [2, 2],
+    }));
+    
+    model.add((<any> window).tf.layers.flatten());
+    
+    model.add((<any> window).tf.layers.dropout(0.2));
+    
+    // Two output values x and y
+    model.add((<any> window).tf.layers.dense({
+        units: 2,
+        activation: 'tanh',
+    }));
+    
+    // Use ADAM optimizer with learning rate of 0.0005 and MSE loss
+    model.compile({
+        optimizer: (<any> window).tf.train.adam(0.0005),
+        loss: 'meanSquaredError',
+    });
+    await model.fit(tensorImg, {epochs: 500});
+    model.predict(tensorImg).print();
+  }
+
+  private async detectObjects() {
+    const imgs = document.getElementsByClassName('data');
+    for (let i = 0; i < imgs.length; i++) {
+      const img = (<any> window).cv.imread(imgs.item(i))
+      const cropped = (<any> window).cv.imread(document.getElementById('cropped') as HTMLImageElement)
+      console.log("Image: ", img)
+      console.log("Open CV: ",(<any> window).cv, (<any> window).cv.getBuildInformation())
+      let dst = new (<any> window).cv.Mat();
+      let mask = new (<any> window).cv.Mat();
+      console.log("Open CV: ", (<any> window).cv.matchTemplate(img,cropped, dst, (<any> window).cv.TM_CCOEFF_NORMED))
+      let result = (<any> window).cv.minMaxLoc(dst, mask);
+      let maxPoint = result.maxLoc;
+      let color = new (<any> window).cv.Scalar(255, 0, 0, 255);
+      let point = new (<any> window).cv.Point(maxPoint.x + cropped.cols, maxPoint.y + cropped.rows);
+      const c = document.createElement('canvas') as HTMLCanvasElement;
+      const context = c.getContext('2d');
+      (<any> window).cv.rectangle(img, maxPoint, point, color, 2, (<any> window).cv.LINE_8, 0);
+      (<any> window).cv.imshow(c, img);
+      const container = document.getElementById("container")
+      container?.appendChild(c)
+      // const model = await (<any> window).deeplab?.load();
+      // console.log("Model: ", model)
+      // const segment = await model.segment(document.getElementById("cropped"))
+      // console.log("Segment: ", segment)
+      // Classify the image.
+      // const predictions = await model.classify(img);
+      // console.log('Predictions');
+      // console.log(predictions);
+      // const predictions = await model?.predict(img);
+      // console.log("Predections: ", predictions)
+      // if (predictions.length && img) {
+      //   this.drawObject(img, predictions)
+      // }
+    }
+
+  }
+
+  drawObject(image: HTMLImageElement, result: Array<{bbox: Array<number>, class: string, score: number}>) {
+      const c = document.createElement('canvas') as HTMLCanvasElement;
+      const context = c.getContext('2d');
+      if (context) {
+        context.drawImage(image, 0, 0, image.width, image.height);
+        context.font = '10px Arial';
+    
+        console.log('number of detections: ', result.length);
+        for (let i = 0; i < result.length; i++) {
+          context.beginPath();
+          context.rect(result[i].bbox[0], result[i].bbox[1], result[i].bbox[2], result[i].bbox[3]);
+          context.lineWidth = 1;
+          context.strokeStyle = 'green';
+          context.fillStyle = 'green';
+          context.stroke();
+        }
+      }
+      const container = document.getElementById("container")
+      container?.appendChild(c)
+    
   }
 }

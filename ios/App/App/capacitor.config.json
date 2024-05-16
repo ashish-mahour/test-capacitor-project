@@ -1,5 +1,5 @@
 {
-	"appId": "com.tlcgroup.customer.prestigeclub",
+	"appId": "com.test.capacitor.demo",
 	"appName": "TestCapacitorApp",
 	"webDir": "www",
 	"server": {
@@ -24,8 +24,6 @@
 		"accessOrigins": [
 			"*"
 		],
-		"preferences": {
-			"environmentIDValue": "0b11157d649c/e12007c915ba/launch-a00885a9c4aa-staging"
-		}
+		"preferences": {}
 	}
 }
