@@ -21,6 +21,7 @@ import { Contacts } from "@capacitor-community/contacts"
 import { MediaCapture } from '@awesome-cordova-plugins/media-capture/ngx';
 import { Storage } from '@ionic/storage-angular';
 import { PushNotifications } from "@capacitor/push-notifications"
+import { windowToggle } from 'rxjs';
 // import * as cv from "@techstark/opencv-js"
 // import * as mobilenet from "@tensorflow-models/mobilenet"
 
@@ -83,36 +84,15 @@ export const CHAT = {
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-
+  // <area target="" alt="" title="" href="" coords="21,633,94,719" shape="rect">
+  // <area target="" alt="" title="" href="" coords="174,637,247,713" shape="rect">
+  // <area target="" alt="" title="" href="" coords="338,637,420,712" shape="rect">
   private secureKey: string = ""
   private secureIV: string = ""
   private crashlytics: any = null
   public screenshotURI: string | null = null
-  public seats = [
-    {
-      x: 190,
-      y: 256,
-      width: 53,
-      height: 77
-    },
-    {
-      x: 246,
-      y: 311,
-      width: 60,
-      height: 77
-    },
-    {
-      x: 216,
-      y: 128,
-      width: 41,
-      height: 34
-    },
-    {
-      x: 337,
-      y: 104,
-      width: 224,
-      height: 170
-    }
+  public cordinates: Array<Array<number>> = [
+    [19,51,100,129], [19,216,100,295], [19,374,98,445], [19,516,102,587], [170,509,250,592], [166,642,255,710], [334,511,433,589], [499,508,581,585], [641,510,717,585], [335,634,429,709], [489,638,584,707], [648,636,720,713], [20,642,99,714], [245,395,323,489], [328,396,408,493], [422,401,496,488], [508,398,582,486], [414,309,497,397], [510,302,578,394], [603,287,717,493], [480,187,684,258], [378,189,448,255], [227,182,374,331]
   ]
 
   constructor(
@@ -501,6 +481,23 @@ export class HomePage implements OnInit {
   }
 
   private async detectObjects() {
+    // let src = cv.imread('imageCanvasInput');
+    // let templ = cv.imread('templateCanvasInput');
+    // cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
+    // cv.cvtColor(templ, templ, cv.COLOR_RGBA2GRAY, 0);
+    // cv.adaptiveThreshold(src, src, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 255, 1);
+    // cv.adaptiveThreshold(templ, templ, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 255, 1);
+    // let dst = new cv.Mat();
+    // let mask = new cv.Mat();
+    // cv.matchTemplate(src, templ, dst, cv.TM_CCOEFF_NORMED, mask);
+    // let result = cv.minMaxLoc(dst, mask);
+    // let maxPoint = result.maxLoc;
+    // let color = new cv.Scalar(255, 0, 0, 255);
+    // let point = new cv.Point(maxPoint.x + templ.cols, maxPoint.y + templ.rows);
+    // cv.rectangle(src, maxPoint, point, color, 2, cv.LINE_8, 0);
+    // cv.imshow('canvasOutput', src);
+    // src.delete(); dst.delete(); mask.delete();
+
     const imgs = document.getElementsByClassName('data');
     for (let i = 0; i < imgs.length; i++) {
       const img = (<any> window).cv.imread(imgs.item(i))
