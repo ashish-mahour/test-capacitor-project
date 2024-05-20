@@ -4,7 +4,7 @@ import { AndroidPermissions, AndroidPermissionResponse } from '@awesome-cordova-
 import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
 import { AppAvailability } from '@awesome-cordova-plugins/app-availability/ngx';
-import { Platform } from '@ionic/angular';
+import { AlertController, Platform } from '@ionic/angular';
 import { Calendar } from '@awesome-cordova-plugins/calendar/ngx';
 import { FilePath } from '@awesome-cordova-plugins/file-path/ngx';
 import { FingerprintAIO } from '@awesome-cordova-plugins/fingerprint-aio/ngx';
@@ -22,6 +22,7 @@ import { MediaCapture } from '@awesome-cordova-plugins/media-capture/ngx';
 import { Storage } from '@ionic/storage-angular';
 import { PushNotifications } from "@capacitor/push-notifications"
 import { windowToggle } from 'rxjs';
+import { CdkDragDrop, CdkDragRelease, CdkDragStart } from '@angular/cdk/drag-drop';
 // import * as cv from "@techstark/opencv-js"
 // import * as mobilenet from "@tensorflow-models/mobilenet"
 
@@ -91,8 +92,117 @@ export class HomePage implements OnInit {
   private secureIV: string = ""
   private crashlytics: any = null
   public screenshotURI: string | null = null
-  public cordinates: Array<Array<number>> = [
-    [19,51,100,129], [19,216,100,295], [19,374,98,445], [19,516,102,587], [170,509,250,592], [166,642,255,710], [334,511,433,589], [499,508,581,585], [641,510,717,585], [335,634,429,709], [489,638,584,707], [648,636,720,713], [20,642,99,714], [245,395,323,489], [328,396,408,493], [422,401,496,488], [508,398,582,486], [414,309,497,397], [510,302,578,394], [603,287,717,493], [480,187,684,258], [378,189,448,255], [227,182,374,331]
+  // public cordinates: Array<Array<number>> = [
+    
+  //   [19,51,100,129], [19,216,100,295], [19,374,98,445], [19,516,102,587], [170,509,250,592], [166,642,255,710], [334,511,433,589], [499,508,581,585], [641,510,717,585], [335,634,429,709], [489,638,584,707], [648,636,720,713], [20,642,99,714], [245,395,323,489], [328,396,408,493], [422,401,496,488], [508,398,582,486], [414,309,497,397], [510,302,578,394], [603,287,717,493], [480,187,684,258], [378,189,448,255], [227,182,374,331]
+  // ]
+
+  public tableData: Array<{name: string, cordinates: Array<number>, isReserved: boolean}> = [
+    {
+      name: "Table 1",
+      cordinates: [19,51,100,129],
+      isReserved: false
+    },
+    {
+      name: "Table 2",
+      cordinates: [19,216,100,295],
+      isReserved: false
+    },
+    {
+      name: "Table 3",
+      cordinates: [19,374,98,445],
+      isReserved: false
+    },
+    {
+      name: "Table 4",
+      cordinates: [19,516,102,587],
+      isReserved: false
+    },
+    {
+      name: "Table 5",
+      cordinates: [170,509,250,592],
+      isReserved: false
+    },
+    {
+      name: "Table 6",
+      cordinates: [166,642,255,710],
+      isReserved: false
+    },
+    {
+      name: "Table 7",
+      cordinates: [334,511,433,589],
+      isReserved: false
+    },
+    {
+      name: "Table 8",
+      cordinates: [499,508,581,585],
+      isReserved: false
+    },
+    {
+      name: "Table 9",
+      cordinates: [641,510,717,585],
+      isReserved: false
+    },
+    {
+      name: "Table 10",
+      cordinates: [335,634,429,709],
+      isReserved: false
+    },
+    {
+      name: "Table 11",
+      cordinates: [489,638,584,707],
+      isReserved: false
+    },
+    {
+      name: "Table 12",
+      cordinates: [648,636,720,713],
+      isReserved: false
+    },
+    {
+      name: "Table 13",
+      cordinates: [20,642,99,714],
+      isReserved: false
+    },
+    {
+      name: "Table 14",
+      cordinates: [245,395,323,489],
+      isReserved: false
+    },
+    {
+      name: "Table 15",
+      cordinates: [328,396,408,493],
+      isReserved: false
+    },
+    {
+      name: "Table 16",
+      cordinates: [422,401,496,488],
+      isReserved: false
+    },
+    {
+      name: "Table 17",
+      cordinates: [508,398,582,486],
+      isReserved: false
+    },
+    {
+      name: "Table 18",
+      cordinates: [414,309,497,397],
+      isReserved: false
+    },
+    {
+      name: "Table 19",
+      cordinates: [510,302,578,394],
+      isReserved: false
+    },
+    {
+      name: "Table 20",
+      cordinates: [603,287,717,493],
+      isReserved: false
+    },
+    {
+      name: "Table 22",
+      cordinates: [378,189,448,255],
+      isReserved: false
+    }
   ]
 
   constructor(
@@ -114,7 +224,8 @@ export class HomePage implements OnInit {
     private firebaseAnalytics: FirebaseAnalytics,
     private firebaseCrashlytics: FirebaseCrashlytics,
     private mediaCapture: MediaCapture,
-    private storage: Storage
+    private storage: Storage,
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -554,5 +665,41 @@ export class HomePage implements OnInit {
       const container = document.getElementById("container")
       container?.appendChild(c)
     
+  }
+
+  public onDragReleased(cdkDragRelease: CdkDragRelease) {
+    // console.log("onDragReleased: ", cdkDragRelease.event, cdkDragRelease.source)
+    const rect = cdkDragRelease.source.getRootElement().getBoundingClientRect()
+    // console.log("Rect: ", rect)
+    const x = (rect.x + rect.right) / 2
+    const y = (rect.y + rect.bottom) / 2
+    console.log("X, Y: ", x, y)
+    const table = this.tableData.find(table => {
+      return table.cordinates[0] <= x && table.cordinates[2] >= x && table.cordinates[1] <= y && table.cordinates[3] >= y
+    })
+    console.log("Table: ", table)
+    if (table) {
+      cdkDragRelease.source.getRootElement().style.border = "2px solid mediumspringgreen"
+      cdkDragRelease.source.getRootElement().style.color = "mediumspringgreen"
+      this.showAlert(`${table.name} Assigned.`)
+    } else {
+      cdkDragRelease.source.getRootElement().style.border = "2px solid white"
+      cdkDragRelease.source.getRootElement().style.color = "white"
+      cdkDragRelease.source.reset()
+    }
+  }
+
+  public onDragStarted(cdkDragStart: CdkDragStart) {
+    // console.log("onDragStarted: ", cdkDragStart, cdkDragStart.source.getRootElement())
+    cdkDragStart.source.getRootElement().style.border = "2px solid red"
+    cdkDragStart.source.getRootElement().style.color = "red"
+
+  }
+
+  private async showAlert(msg: string) {
+    this.alertController.create({
+      message: msg,
+      buttons: ["OK"]
+    }).then(alert => alert.present())
   }
 }

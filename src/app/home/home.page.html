@@ -72,16 +72,16 @@
       <img style="width: 100%;" [src]="screenshotURI">
     </ion-row>
   </ion-grid> -->
-
+  
   <div class="container">
     <div class="content">
-      <ng-container *ngFor="let cordinate of cordinates">
-        <div class="seat" [ngStyle]="{ left: cordinate[0] + 'px', top: cordinate[1] + 'px', width: (cordinate[2] - cordinate[0]) + 'px', height: (cordinate[3] - cordinate[1]) + 'px' }"></div>
+      <ng-container *ngFor="let table of tableData">
+        <div class="seat" [ngStyle]="{ left: (table.cordinates[0]) + 'px', top: table.cordinates[1] + 'px', width: (table.cordinates[2] - table.cordinates[0]) + 'px', height: (table.cordinates[3] - table.cordinates[1]) + 'px' }"></div>
       </ng-container>
       <img src="/assets/imgs/2.jpg">
-    </div>    
+    </div> 
+    <div style="display: flex; flex-direction: column;" #personContainer>
+      <ion-icon cdkDrag cdkDragBoundary=".content" style="font-size: 3em; padding: 10px; border: 2px solid white" *ngFor="let x of [0, 1, 2, 3, 4, 5, 6, 7, 8]" name="person" (cdkDragReleased)="onDragReleased($event)" (cdkDragStarted)="onDragStarted($event)"></ion-icon>
+    </div>   
   </div>
-  <!-- <img id="cropped" src="/assets/imgs/cropped.jpg"> -->
-  <!-- <img class="data" src="/assets/imgs/2.jpg"> -->
-  <!-- <div id="container"></div> -->
 </ion-content>

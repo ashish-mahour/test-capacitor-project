@@ -28,6 +28,7 @@ import { FirebaseCrashlytics } from "@awesome-cordova-plugins/firebase-crashlyti
 import { MediaCapture } from '@awesome-cordova-plugins/media-capture/ngx';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { Drivers } from '@ionic/storage';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +36,7 @@ import { Drivers } from '@ionic/storage';
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
+    DragDropModule,
     IonicStorageModule.forRoot({
       name: "TEST_DB",
       driverOrder : [Drivers.IndexedDB, Drivers.LocalStorage],
