@@ -78,10 +78,10 @@
       <ng-container *ngFor="let table of tableData">
         <div class="seat" [ngStyle]="{ left: (table.cordinates[0]) + 'px', top: table.cordinates[1] + 'px', width: (table.cordinates[2] - table.cordinates[0]) + 'px', height: (table.cordinates[3] - table.cordinates[1]) + 'px' }"></div>
       </ng-container>
-      <img src="/assets/imgs/2.jpg">
+      <img src="/assets/imgs/k3.jpg">
     </div> 
     <div style="display: flex; flex-direction: column;" #personContainer>
-      <ion-icon cdkDrag cdkDragBoundary=".content" style="font-size: 3em; padding: 10px; border: 2px solid white" *ngFor="let x of [0, 1, 2, 3, 4, 5, 6, 7, 8]" name="person" (cdkDragReleased)="onDragReleased($event)" (cdkDragStarted)="onDragStarted($event)"></ion-icon>
+      <ion-icon cdkDrag cdkDragBoundary=".content" style="font-size: 1em; padding: 10px; border: 2px solid skyblue; color: skyblue;" *ngFor="let x of [0, 1, 2, 3, 4, 5, 6, 7, 8]" name="person" (cdkDragReleased)="onDragReleased($event)" (cdkDragStarted)="onDragStarted($event)"></ion-icon>
     </div>   
   </div>
 </ion-content>

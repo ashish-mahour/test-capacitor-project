@@ -100,107 +100,102 @@ export class HomePage implements OnInit {
   public tableData: Array<{name: string, cordinates: Array<number>, isReserved: boolean}> = [
     {
       name: "Table 1",
-      cordinates: [19,51,100,129],
+      cordinates: [114,194,146,215],
       isReserved: false
     },
     {
       name: "Table 2",
-      cordinates: [19,216,100,295],
+      cordinates: [114,232,146,254],
       isReserved: false
     },
     {
       name: "Table 3",
-      cordinates: [19,374,98,445],
+      cordinates: [113,291,143,322],
       isReserved: false
     },
     {
       name: "Table 4",
-      cordinates: [19,516,102,587],
+      cordinates: [278,242,311,273],
       isReserved: false
     },
     {
       name: "Table 5",
-      cordinates: [170,509,250,592],
+      cordinates: [198,289,231,313],
       isReserved: false
     },
     {
       name: "Table 6",
-      cordinates: [166,642,255,710],
+      cordinates: [200,319,232,345],
       isReserved: false
     },
     {
       name: "Table 7",
-      cordinates: [334,511,433,589],
+      cordinates: [200,353,232,380],
       isReserved: false
     },
     {
       name: "Table 8",
-      cordinates: [499,508,581,585],
+      cordinates: [279,358,313,384],
       isReserved: false
     },
     {
       name: "Table 9",
-      cordinates: [641,510,717,585],
+      cordinates: [190,440,224,482],
       isReserved: false
     },
     {
       name: "Table 10",
-      cordinates: [335,634,429,709],
+      cordinates: [269,435,299,482],
       isReserved: false
     },
     {
       name: "Table 11",
-      cordinates: [489,638,584,707],
+      cordinates: [286,306,313,336],
       isReserved: false
     },
     {
       name: "Table 12",
-      cordinates: [648,636,720,713],
+      cordinates: [377,188,407,244],
       isReserved: false
     },
     {
       name: "Table 13",
-      cordinates: [20,642,99,714],
+      cordinates: [611,452,669,481],
       isReserved: false
     },
     {
       name: "Table 14",
-      cordinates: [245,395,323,489],
+      cordinates: [853,448,892,480],
       isReserved: false
     },
     {
       name: "Table 15",
-      cordinates: [328,396,408,493],
+      cordinates: [794,263,825,293],
       isReserved: false
     },
     {
       name: "Table 16",
-      cordinates: [422,401,496,488],
+      cordinates: [860,259,898,293],
       isReserved: false
     },
     {
       name: "Table 17",
-      cordinates: [508,398,582,486],
+      cordinates: [238,13,267,48],
       isReserved: false
     },
     {
       name: "Table 18",
-      cordinates: [414,309,497,397],
+      cordinates: [283,7,313,52],
       isReserved: false
     },
     {
       name: "Table 19",
-      cordinates: [510,302,578,394],
+      cordinates: [330,9,360,41],
       isReserved: false
     },
     {
       name: "Table 20",
-      cordinates: [603,287,717,493],
-      isReserved: false
-    },
-    {
-      name: "Table 22",
-      cordinates: [378,189,448,255],
+      cordinates: [374,6,406,50],
       isReserved: false
     }
   ]
@@ -683,8 +678,8 @@ export class HomePage implements OnInit {
       cdkDragRelease.source.getRootElement().style.color = "mediumspringgreen"
       this.showAlert(`${table.name} Assigned.`)
     } else {
-      cdkDragRelease.source.getRootElement().style.border = "2px solid white"
-      cdkDragRelease.source.getRootElement().style.color = "white"
+      cdkDragRelease.source.getRootElement().style.border = "2px solid skyblue"
+      cdkDragRelease.source.getRootElement().style.color = "skyblue"
       cdkDragRelease.source.reset()
     }
   }
